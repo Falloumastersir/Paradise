@@ -1,14 +1,13 @@
 package com.paradise.hotel.util;
 
 import org.hibernate.SessionFactory;
-
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 
 public class HibernateUtil {
 	private static SessionFactory sessionFactory;
-    private static String configFile = "hibernate.cfg.xml";
+    private static String configFile = "hibernate.cfg.xml";       
  
     static {
         try {

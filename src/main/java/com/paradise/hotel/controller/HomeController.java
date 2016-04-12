@@ -11,4 +11,9 @@ public class HomeController {
 	 public String welcome() {	    
 	    return "welcome";
 	 }
+	 
+	 @RequestMapping("/admin")
+	 public String admin() {
+		 return "admin";
+	 }
 }
