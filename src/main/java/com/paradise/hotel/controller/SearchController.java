@@ -20,7 +20,7 @@ public class SearchController {
 	public ModelAndView search(@RequestParam("testing") String room) {
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
-		Room sampleRoom = session.get(Room.class, 1);
+		Room sampleRoom = (Room) session.get(Room.class, 1);
 		System.out.println("Request room description: " + sampleRoom.getDescription());
 		room = sampleRoom.getDescription();
 		
