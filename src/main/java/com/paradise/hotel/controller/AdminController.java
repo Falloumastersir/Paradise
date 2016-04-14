@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.paradise.hotel.entity.Room;
-import com.paradise.hotel.service.RoomHandler;
+import com.paradise.hotel.services.RoomHandler;
 
 @Controller
 public class AdminController {
@@ -75,7 +75,9 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="/newRoom")
-	public String newRoom(@RequestParam ("description") String description, 
+	public String newRoom(
+			@RequestParam ("roomNumber") String roomNumber,
+			@RequestParam ("description") String description, 
 			@RequestParam ("roomType") String roomType,
 			@RequestParam("bedType") String bedType,
             @RequestParam ("image") String imageTitle,
@@ -84,6 +86,8 @@ public class AdminController {
 		
 		try{
 			Room newRoom = new Room();
+			int roomNum = Integer.parseInt(roomNumber);
+			newRoom.setRoomNumber(roomNum);
 		 	newRoom.setRoomType(roomType);
 		    newRoom.setDescription(description);
 		    newRoom.setBedType(bedType);

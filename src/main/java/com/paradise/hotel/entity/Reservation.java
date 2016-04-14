@@ -20,10 +20,13 @@ public class Reservation implements Serializable {
 
 	private byte cancelled;
 
-	private byte closed;
+	@Temporal(TemporalType.DATE)
+	private Date checkIn;
 
 	@Temporal(TemporalType.DATE)
-	private Date dates;
+	private Date checkOut;
+
+	private byte closed;
 
 	@Column(name="room_id")
 	private int roomId;
@@ -47,20 +50,28 @@ public class Reservation implements Serializable {
 		this.cancelled = cancelled;
 	}
 
+	public Date getCheckIn() {
+		return this.checkIn;
+	}
+
+	public void setCheckIn(Date checkIn) {
+		this.checkIn = checkIn;
+	}
+
+	public Date getCheckOut() {
+		return this.checkOut;
+	}
+
+	public void setCheckOut(Date checkOut) {
+		this.checkOut = checkOut;
+	}
+
 	public byte getClosed() {
 		return this.closed;
 	}
 
 	public void setClosed(byte closed) {
 		this.closed = closed;
-	}
-
-	public Date getDates() {
-		return this.dates;
-	}
-
-	public void setDates(Date dates) {
-		this.dates = dates;
 	}
 
 	public int getRoomId() {

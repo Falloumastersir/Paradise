@@ -79,7 +79,7 @@
 				<li><a href="book">Book a Room</a></li> |
 				<li><a href="gallery">Photo Gallery</a></li> |
 				<li><a href="contact">Contact Us</a></li>|
-				<li><a href="login">Login/SignUp</a></li> 
+				<li><a href="loginPage">Login/SignUp</a></li> 
 				<div class="clear"></div>
 			</ul>
 			<!-- start profile_details -->
@@ -225,7 +225,7 @@
 					<div class="section_room">
 						<select id="country" onchange="change_country(this.value)"
 						 class="frm-field required"
-						name="adults">
+						name="guestNum">
 							<option value="1">1</option>
 				            <option value="2">2</option>         
 				            <option value="3">3</option>

@@ -1,4 +1,4 @@
-package com.paradise.hotel.service;
+package com.paradise.hotel.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +18,13 @@ public class RoomHandler {
 	
 	//@Resource
 	private SessionFactory factory;
-	private static final String ROOMS = "Room";
+	private static final String ROOM = "Room";
 
 	public List<Room> getAllRooms() {
 		factory = HibernateUtil.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
-		Query query = session.createQuery("from " + ROOMS);
+		Query query = session.createQuery("from " + ROOM);
 		List<Room> list = new ArrayList<Room>();
 		try {
 			list = query.list();

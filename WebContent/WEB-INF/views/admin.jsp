@@ -89,7 +89,11 @@
 
 <!-- Adding a new room -->
 <div id=newRooms>
-	<form action="newRoom" method="GET">Room Type
+	<form action="newRoom" method="GET">
+		Room Number
+		<input type="text" name="roomNumber"><br/>
+	
+		Room Type
 		<select name="roomType" >
 							<option >Select a type of room</option>
 				            <option value="Suite">Suite room</option>

@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %> 
 <%@ taglib uri= "http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
+ 
 
 <!DOCTYPE html>
 
@@ -85,31 +87,11 @@
 
     <div class="clear"></div>
 </div>
-   
-<div id="loginMain">
-      <img src="resources/images/hotel9.jpg" alt=""/>
-       <div class="wrapper">
-	<div class="container">
-	 
-		<h1>Welcome</h1>
-		
-		<form:form class="form" action="loginController" method="POST" >
-		
-            <input type="text" placeholder="Name" name="name">
-			<input type="text" placeholder="Username" name="username">
-			<input type="password" placeholder="Password" name="password">
-                       
-                       <button type="submit" id="login-button" name="login">Login</button>
-                       
-                        <button type="submit" id="login-button" name="cancel">Cancel</button>
-		</form:form>
-		
-		<span class="login-box-options">
-New User?  <a href="registerPage" style="margin-left:30px;">Register Here</a>
-</span>
-	</div>
-	
-</div>
-</div>
-
+<h2>Message : ${message}</h2>
+ 
+  <c:if test="${pageContext.request.userPrincipal.name != null}">
+     <h3>User Info : ${pageContext.request.userPrincipal.name}
+        </h3>  
+  </c:if>  
+</body>
 </html>

@@ -90,24 +90,20 @@
       <img src="resources/images/hotel9.jpg" alt=""/>
        <div class="wrapper">
 	<div class="container">
-	 
-		<h1>Welcome</h1>
+	<h1>Welcome</h1>
 		
-		<form:form class="form" action="loginController" method="POST" >
+		<form:form class="form" action="registerController" method="POST" >
 		
-            <input type="text" placeholder="Name" name="name">
-			<input type="text" placeholder="Username" name="username">
+            <input type="text" placeholder="Name" name="name" maxlength="30">
+            (max 30 characters a-z and A-Z)
+			<input type="text" placeholder="Username" name="username" maxlength="30">
+			(max 30 characters a-z and A-Z)
 			<input type="password" placeholder="Password" name="password">
                        
-                       <button type="submit" id="login-button" name="login">Login</button>
-                       
-                        <button type="submit" id="login-button" name="cancel">Cancel</button>
+                       <button type="submit" id="login-button" name="register">Register</button>
+                
 		</form:form>
-		
-		<span class="login-box-options">
-New User?  <a href="registerPage" style="margin-left:30px;">Register Here</a>
-</span>
-	</div>
+		</div>
 	
 </div>
 </div>

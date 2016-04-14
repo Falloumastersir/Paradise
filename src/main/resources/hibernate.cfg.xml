@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
- 
+
 <hibernate-configuration>
     <session-factory>
         <!-- Database connection settings -->
@@ -11,21 +11,24 @@
         <property name="connection.username">root</property>
         <property name="connection.password">password</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
- 
+
         <!-- JDBC connection pool (use the built-in) -->
         <property name="connection.pool_size">1</property>
- 
+
         <!-- Enable Hibernate's current session context -->
         <property name="current_session_context_class">thread</property>
- 
+
         <!-- Disable the second-level cache -->
         <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
- 
+
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
         <!-- <property name="hbm2ddl.auto">create</property> -->
- 
+
         <mapping class="com.paradise.hotel.entity.Room" />
+        <mapping class="com.paradise.hotel.entity.User" />
+        <mapping class="com.paradise.hotel.entity.Reservation" />
+        
     </session-factory>
- 
+
 </hibernate-configuration>
