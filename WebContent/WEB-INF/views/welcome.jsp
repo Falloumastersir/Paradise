@@ -71,6 +71,7 @@
 			<a href="welcome.jsp"><img src="resources/images/logo.png" alt=""></a>
 		</div>
 		<div class="h_right">
+		
 			<!--start menu -->
 			<ul class="menu">
 				<li class="active"><a href="welcome">Home</a></li> |

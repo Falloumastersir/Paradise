@@ -1,4 +1,12 @@
+com/paradise/hotel/controller/GalleryController.class
+com/paradise/hotel/controller/AdminController.class
 com/paradise/hotel/controller/HomeController.class
 com/paradise/hotel/controller/SearchController.class
+com/paradise/hotel/controller/LoginController.class
 com/paradise/hotel/entity/Room.class
 com/paradise/hotel/util/HibernateUtil.class
+com/paradise/hotel/controller/ContactController.class
+com/paradise/hotel/controller/RoomController.class
+com/paradise/hotel/controller/DetailsController.class
+com/paradise/hotel/controller/AboutUsController.class
+com/paradise/hotel/service/RoomHandler.class

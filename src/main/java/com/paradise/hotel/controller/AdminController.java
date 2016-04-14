@@ -1,58 +1,78 @@
 package com.paradise.hotel.controller;
 
 import java.math.BigDecimal;
+import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.paradise.hotel.entity.Room;
-import com.paradise.hotel.util.HibernateUtil;
+import com.paradise.hotel.service.RoomHandler;
 
 @Controller
 public class AdminController {
-
-	SessionFactory factory = HibernateUtil.getSessionFactory();
 	
-//	@RequestMapping(value="/newRoom", method=RequestMethod.GET)
-//	public String newRoom(@RequestParam ("roomType") String roomType,
-//	                           @RequestParam("bedType") String bedType,
-//	                           @RequestParam ("image") String imageTitle,
-//	                           @RequestParam ("description") String description,
-//	                           @RequestParam ("price") double price,
-//	                           @RequestParam("breakfast") int boolBreak,
-//	                           @RequestParam("dinner") int boolDinner,
-//	                           @RequestParam("spa") int boolSpa) {
-//		
-//		System.out.println("Room description " + description);
-//		
-//		
-//		
-//		return "admin";
-//	}
+	//@Autowired
+	RoomHandler roomHand = new RoomHandler();	
 	
-//	@RequestMapping(value="/newRoom", method=RequestMethod.GET)
-//	public ModelAndView newRoom(
-//			                   @RequestParam ("roomType") String roomType,
-//	                           @RequestParam("bedType") String bedType,
-//	                           @RequestParam ("image") String imageTitle,
-//	                           @RequestParam ("description") String description,
-//	                           @RequestParam ("price") double price,
-//	                           @RequestParam("breakfast") int boolBreak,
-//	                           @RequestParam("dinner") int boolDinner,
-//	                           @RequestParam("spa") int boolSpa,
-//	                           ModelMap model) {
-//			
-//		     System.out.println("Room description ");
-//		
-//		
-//	         return new ModelAndView("admin", "model", model);
-//	}
+	@RequestMapping("/admin")
+	 public ModelAndView listRoom() {
+				
+		List<Room> roomList = roomHand.getAllRooms();		
+		
+		return new ModelAndView("admin", "roomList", roomList);
+	 }
+	
+	@RequestMapping(value="deleteRoom")
+	public String deleteRoom(@RequestParam("id") int id) {
+		try {
+			Room roomToDelete = roomHand.getRoomById(id);
+			roomHand.deleteRoom(roomToDelete);
+			
+		} catch ( Exception ex) {
+			ex.printStackTrace();
+		}
+		return "admin";
+	}
+	
+	@RequestMapping(value="editRoom")
+	public String editRoom(
+			@RequestParam("id") int id,
+			@RequestParam ("roomType") String roomType,
+			@RequestParam("bedType") String bedType,
+            @RequestParam ("image") String imageTitle,
+            @RequestParam ("price") String price,
+            @RequestParam ("description") String description,
+            @RequestParam("amen") String[] amenities) {
+		
+		try {
+			Room roomToEdit = roomHand.getRoomById(id);
+			roomToEdit.setRoomType(roomType);
+			roomToEdit.setBedType(bedType);
+			roomToEdit.setImageTitle(imageTitle);
+			BigDecimal decPrice = new BigDecimal(price);
+			roomToEdit.setPrice(decPrice);
+			roomToEdit.setDescription(description);
+			for (String a : amenities){
+	    		System.out.println(a);
+	    		if (a.equals("Breakfast")){ roomToEdit.setBreakfast((byte) 1); }
+	    			
+	    		if (a.equals("Dinner")){ roomToEdit.setDinner((byte)1); }
+	    			
+	    		if (a.equals("Spa")){ roomToEdit.setSpa((byte)1); }
+	    		
+	    		roomHand.updateRoom(roomToEdit);
+	    }
+						
+		} catch (Exception ex)  {
+			ex.printStackTrace();
+		}
+		
+		return "admin";
+	}
+	
 	
 	@RequestMapping(value="/newRoom")
 	public String newRoom(@RequestParam ("description") String description, 
@@ -60,20 +80,16 @@ public class AdminController {
 			@RequestParam("bedType") String bedType,
             @RequestParam ("image") String imageTitle,
             @RequestParam ("price") String price,
-    		    @RequestParam("amen") String[] amenities) {
-		
-		System.out.println(description + roomType + bedType + price + amenities.toString());
+    		    @RequestParam("amen") String[] amenities) {			
 		
 		try{
-			
-			Session session = factory.getCurrentSession();
-		 	session.beginTransaction();
-		 	Room newRoom = new Room();
-		 	newRoom.setType(roomType);
+			Room newRoom = new Room();
+		 	newRoom.setRoomType(roomType);
 		    newRoom.setDescription(description);
 		    newRoom.setBedType(bedType);
 		    newRoom.setImageTitle(imageTitle);
 		    BigDecimal decPrice = new BigDecimal(price);
+		    newRoom.setPrice(decPrice);
 
 		    for (String a : amenities){
 		    		System.out.println(a);
@@ -83,16 +99,13 @@ public class AdminController {
 		    			
 		    		if (a.equals("Spa")){ newRoom.setSpa((byte)1); }
 		    }
-		    
-		    newRoom.setPrice(decPrice);
-		 	session.save(newRoom);
-		 	session.getTransaction().commit();
-			
+		    		    		
+			roomHand.addRoom(newRoom);
+								
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
-	    
+			    
 		return "admin";
 	}
 		

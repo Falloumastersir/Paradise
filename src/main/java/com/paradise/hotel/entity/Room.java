@@ -3,15 +3,13 @@ package com.paradise.hotel.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
 
 
 /**
- * The persistent class for the Rooms database table.
+ * The persistent class for the ROOM database table.
  * 
  */
 @Entity
-@Table(name="Rooms")
 @NamedQuery(name="Room.findAll", query="SELECT r FROM Room r")
 public class Room implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -19,11 +17,7 @@ public class Room implements Serializable {
 	@Id
 	private int id;
 
-	@Column(name="bed_type")
 	private String bedType;
-
-	@Temporal(TemporalType.DATE)
-	private Date booked;
 
 	private byte breakfast;
 
@@ -32,14 +26,15 @@ public class Room implements Serializable {
 
 	private byte dinner;
 
-	@Column(name="image_title")
 	private String imageTitle;
 
 	private BigDecimal price;
 
-	private byte spa;
+	private String roomType;
 
-	private String type;
+	private byte spa;
+	
+	private int roomNumber;
 
 	public Room() {
 	}
@@ -58,14 +53,6 @@ public class Room implements Serializable {
 
 	public void setBedType(String bedType) {
 		this.bedType = bedType;
-	}
-
-	public Date getBooked() {
-		return this.booked;
-	}
-
-	public void setBooked(Date booked) {
-		this.booked = booked;
 	}
 
 	public byte getBreakfast() {
@@ -108,6 +95,14 @@ public class Room implements Serializable {
 		this.price = price;
 	}
 
+	public String getRoomType() {
+		return this.roomType;
+	}
+
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+
 	public byte getSpa() {
 		return this.spa;
 	}
@@ -115,13 +110,13 @@ public class Room implements Serializable {
 	public void setSpa(byte spa) {
 		this.spa = spa;
 	}
-
-	public String getType() {
-		return this.type;
+	
+	public int getRoomNumber() {
+		return this.roomNumber;
 	}
-
-	public void setType(String type) {
-		this.type = type;
+	
+	public void setRoomNumber(int r) {
+		this.roomNumber = r;
 	}
 
 }

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %>
 <%@ taglib uri= "http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,9 +19,9 @@
 <spring:url value="/resources/css/JFGrid.css" var="JFGridCSS" />
 <spring:url value="/resources/css/JFFormStyle-1.css" var="JFFormCSS" />
 <spring:url value="/resources/css/js-image-slider.css" var="imageSliderCSS" />
+<%-- <spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" var="bootstrap" /> --%>
 
 <spring:url value="/resources/js/jquery.min.js" var="JQuerymin" />
-
 <spring:url value="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" var="googleApi" />
 <spring:url value="/resources/js/jquery-ui.min.js" var="JQueryuimin" />
 <spring:url value="/resources/js/css3-mediaqueries.js" var="mediaqueries" />
@@ -30,9 +30,7 @@
 <spring:url value="/resources/js/JFForms.js" var="JFForm" />
 <spring:url value="/resources/js/jquery-ui.js" var="jqueryui" />
 <spring:url value="/resources/js/script.js" var="script" />
-
-
-
+<%-- <spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" var="bootstrapJS" /> --%>
 <!-- end spring:url -->
 
 <link href="${sliderCSS}" rel="stylesheet" media="all" />
@@ -52,7 +50,11 @@
 <script src="${jqueryui}"></script>
 <script src="${script}"></script>
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<!-- Collapsible table -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- Collapsing test -->
 
 </head>
 
@@ -84,6 +86,8 @@
 		<div class="clear"></div>
 </div>
 
+
+<!-- Adding a new room -->
 <div id=newRooms>
 	<form action="newRoom" method="GET">Room Type
 		<select name="roomType" >
@@ -124,7 +128,88 @@
 
 </div>
 
+<!-- View all rooms -->
 <div id=viewRooms>
+	<table border="5">
+	
+	<c:forEach var="room" items="${roomList}">
+	
+		<tr>
+			<td><c:out value="${room.id}"></c:out></td>
+			<td><c:out value="${room.roomNumber}"></c:out></td>
+			<td><c:out value="${room.roomType}"></c:out></td>
+			<td><c:out value="${room.bedType}"></c:out></td>
+			<td><c:out value="${room.imageTitle}"></c:out></td>
+			<td><c:out value="${room.description}"></c:out></td>
+			<td><c:out value="${room.price}"></c:out></td>
+			<td>
+				<c:out value="${room.breakfast}">Breakfast</c:out>
+				<c:out value="${room.spa}">Spa</c:out>
+				<c:out value="${room.dinner}">Dinner</c:out>
+			</td>
+			<td><a href="#demo" data-toggle="collapse"><button type="button" >EDIT</button></a> </td>
+			<td>
+				<form action="deleteRoom" method="GET">
+					<input type="hidden" name="id" value="${room.id}">
+					<input type="submit" value="Delete">
+				</form>
+			</td>
+		</tr>
+		
+		<!-- Collapsible section for editing a room -->			
+		<form action="editRoom" method="GET">
+		<input type="hidden" name="id" value="${room.id}">
+		<tr id="demo" class="collapse">
+			<td>
+				<select name="roomType" >
+							<option >Room Type</option>
+				            <option value="Suite">Suite room</option>
+				            <option value="Single">Single room</option>
+							<option value="Double">Double room</option>
+				</select>
+			</td>
+			<td>
+				<select name="bedType" >
+								<option>Bed Type</option>
+					            <option value="King">King</option>
+					            <option value="Queen">Queen</option>
+								<option value="Double">Double</option>
+				</select>
+			</td>
+			<td>
+				<select name="image" >
+							<option>Image</option>
+				            <option value="image1">Image 1</option>
+				            <option value="image2">Image 2</option>
+							<option value="image3">Image 3</option>
+				</select>
+			</td>
+			<td>
+				Room description
+				<textarea rows="4" cols="50" name="description" value="${room.description}"></textarea>
+			</td>	
+			<td>
+				Price <input type="text" name="price" value="${room.price}">
+			</td>	
+			<td>
+				Breakfast<input type="checkbox" name="amen"  value="breakfast">
+				Dinner<input type="checkbox" name="amen"  value="dinner">
+				Spa<input type="checkbox" name="amen"  value="spa">
+			</td>
+			<td> 
+			<input type="submit" value="Edit">
+			</form>
+			<form action="admin" >
+				<input type="submit" value="Cancel">
+			</form> 
+			</td>	
+		</tr>
+		
+		
+	</c:forEach> 
+	</table>
+
+
 </div>
 
 
