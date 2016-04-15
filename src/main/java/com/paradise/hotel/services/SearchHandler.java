@@ -43,14 +43,17 @@ public class SearchHandler {
 				
 	}		
 	
-	public List<Room> getAvailableRooms(List<Integer> unavail, List<Room> roomList) {				
+	public List<Room> getAvailableRooms(List<Integer> unavail, List<Room> roomList) {
+		List<Room> availList = new ArrayList<Room>();
 		try {
-			for (int i : unavail) {
-				roomList.remove(roomList.get(i));
-			}
+			for (Room r : roomList){
+				if (!unavail.contains(r.getId())){
+					availList.add(r);
+				}				
+			}			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return roomList;
+		return availList;
 	}
 }
