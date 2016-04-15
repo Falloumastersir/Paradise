@@ -14,7 +14,7 @@ public class SearchHandler {
 	private SessionFactory factory;
 	RoomHandler roomHand = new RoomHandler();
 	
-	public List<Room> getAvailableRooms(String checkIn, String checkOut) {
+	public List<Room> getAvailableRooms(String checkIn, String checkOut, String type) {
 		factory = HibernateUtil.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
@@ -34,19 +34,16 @@ public class SearchHandler {
 		}	
 		session.getTransaction().commit();
 		
-		List<Room> available = new ArrayList<Room>();
+		List<Room> roomList = roomHand.getRoomsbyType(type);
 		if (unavailable.isEmpty()){
-			available = roomHand.getAllRooms();
+			return roomList;
 		} else {
-			available = getAvailableRooms(unavailable);
+			return getAvailableRooms(unavailable, roomList);
 		}						
-		
-		return available;
-	}
+				
+	}		
 	
-	public List<Room> getAvailableRooms(List<Integer> unavail) {
-		List<Room> roomList = roomHand.getAllRooms();
-		
+	public List<Room> getAvailableRooms(List<Integer> unavail, List<Room> roomList) {				
 		try {
 			for (int i : unavail) {
 				roomList.remove(roomList.get(i));

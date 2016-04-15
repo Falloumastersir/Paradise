@@ -27,8 +27,7 @@ public class RoomHandler {
 		Query query = session.createQuery("from " + ROOM);
 		List<Room> list = new ArrayList<Room>();
 		try {
-			list = query.list();
-			System.out.println(list);			
+			list = query.list();					
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("Error occurred");
@@ -74,6 +73,24 @@ public class RoomHandler {
 		}
 	 	session.getTransaction().commit();
 	 	return room;
+	}
+	
+	public List<Room> getRoomsbyType(String type) {
+		factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+	 	session.beginTransaction();
+	 	String strQuery = "from Room where roomType='" + type + "'";
+	 	Query query = session.createQuery(strQuery);	 	
+	 	List<Room> list = new ArrayList<Room>();
+		try {
+			list = query.list();			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("Error occurred");
+		}
+		session.getTransaction().commit();		
+
+		return list;	 	 
 	}
 	
 	public void updateRoom(Room r) {

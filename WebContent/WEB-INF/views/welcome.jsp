@@ -180,16 +180,15 @@
 		
 			<ul>
 				<li class="span1_of_1">
-					<h5>type of room:</h5>
+					<h5>Type of room:</h5>
 					<!----------start section_room----------->
 					<div class="section_room">
 						<select id="country" 
 						 onchange="change_country(this.value)" class="frm-field required" 
-						 name="bedType" >
-							<option value="null">Select a type of room</option>
-				            <option value="Suite Room">Suite room</option>         
-				            <option value="Single Room">Single room</option>
-							<option value="Double Room">Double room</option>
+						 name="bedType" >											                     
+				            <option value="single">Single room</option>
+							<option value="double">Double room</option>
+							<option value="suite">Suite room</option>
 		        		</select>
 					</div>	
 				</li>

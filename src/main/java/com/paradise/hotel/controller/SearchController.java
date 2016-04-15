@@ -26,7 +26,7 @@ public class SearchController {
 		
 		String ci = changeDate(checkIn);
 		String co = changeDate(checkOut);	
-		List<Room> searchResult = searchHand.getAvailableRooms(ci, co);		
+		List<Room> searchResult = searchHand.getAvailableRooms(ci, co, bedType);		
 		
 		return new ModelAndView("book", "searchResult", searchResult);
 	}
