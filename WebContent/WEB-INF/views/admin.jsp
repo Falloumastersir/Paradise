@@ -110,9 +110,12 @@
 		Room Image
 		<select name="image" >
 							<option>Select a type of room</option>
-				            <option value="image1">Image 1</option>
-				            <option value="image2">Image 2</option>
-							<option value="image3">Image 3</option>
+				            <option value="single1.jpg">Single 1</option>
+				            <option value="single2.jpg">Single 2</option>
+							<option value="double1.jpg">Double 1</option>
+							<option value="double2.jpg">Double 2</option>
+							<option value="suite1.png">Suite 1</option>
+							<option value="suite2.jpg">Suite 2</option>
 		</select>
 		<br/>
 		Room description
@@ -151,7 +154,7 @@
 				<c:out value="${room.spa}">Spa</c:out>
 				<c:out value="${room.dinner}">Dinner</c:out>
 			</td>
-			<td><a href="#demo" data-toggle="collapse"><button type="button" >EDIT</button></a> </td>
+			<td><a href="#demo${room.id}" data-toggle="collapse"><button type="button" >EDIT</button></a> </td>
 			<td>
 				<form action="deleteRoom" method="GET">
 					<input type="hidden" name="id" value="${room.id}">
@@ -163,7 +166,7 @@
 		<!-- Collapsible section for editing a room -->			
 		<form action="editRoom" method="GET">
 		<input type="hidden" name="id" value="${room.id}">
-		<tr id="demo" class="collapse">
+		<tr id="demo${room.id}" class="collapse">
 			<td>
 				<select name="roomType" >
 							<option >Room Type</option>
@@ -183,9 +186,12 @@
 			<td>
 				<select name="image" >
 							<option>Image</option>
-				            <option value="image1">Image 1</option>
-				            <option value="image2">Image 2</option>
-							<option value="image3">Image 3</option>
+				            <option value="single1.jpg">Single 1</option>
+				            <option value="single2.jpg">Single 2</option>
+							<option value="double1.jpg">Double 1</option>
+							<option value="double2.jpg">Double 2</option>
+							<option value="suite1.png">Suite 1</option>
+							<option value="suite2.jpg">Suite 2</option>
 				</select>
 			</td>
 			<td>

@@ -24,9 +24,22 @@ public class SearchController {
 			@RequestParam("guestNum") String guestNum
 			) {
 		
-		List<Room> searchResult = searchHand.getAvailableRooms(checkIn, checkOut);
-		System.out.println(searchResult);
+		String ci = changeDate(checkIn);
+		String co = changeDate(checkOut);	
+		List<Room> searchResult = searchHand.getAvailableRooms(ci, co);		
 		
 		return new ModelAndView("book", "searchResult", searchResult);
+	}
+	
+	public String changeDate(String date) {		
+		
+		String[] str = date.split("/");
+		String mm = str[0];
+		String dd = str[1];
+		String yy = str[2];
+		
+		String rightDate = yy + "-" + mm + "-" + dd;
+ 				
+		return rightDate;
 	}
 }

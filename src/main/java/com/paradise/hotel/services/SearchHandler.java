@@ -19,17 +19,28 @@ public class SearchHandler {
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
 		
-		String queryStr = "SELECT room_id from Reservation where checkIn < " + checkOut + " and checkOut > " + checkIn;
+		String queryStr = "SELECT room_id from Reservation where " 
+				+ "(checkIn < '" + checkOut + "' and checkIn > '" + checkIn + "')"
+				+ " or "
+				+ "(checkOut < '" + checkOut + "' and checkOut > '" + checkIn + "')";
 		Query query = session.createQuery(queryStr);
 		List<Integer> unavailable = new ArrayList<Integer>();
-		try {
-			unavailable = query.list();			
+		try {			
+			unavailable = query.list();
+			System.out.println("Unavailable rooms: " + unavailable);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			System.out.println("Error occured during getting available rooms");
-		}
-		List<Room> available = getAvailableRooms(unavailable);
-		session.getTransaction();
+		}	
+		session.getTransaction().commit();
+		
+		List<Room> available = new ArrayList<Room>();
+		if (unavailable.isEmpty()){
+			available = roomHand.getAllRooms();
+		} else {
+			available = getAvailableRooms(unavailable);
+		}						
+		
 		return available;
 	}
 	

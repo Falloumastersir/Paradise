@@ -16,7 +16,7 @@ public class Reservation implements Serializable {
 
 	@Id
 	@Column(name="res_id")
-	private int resId;
+	private int res_id;
 
 	private byte cancelled;
 
@@ -29,17 +29,17 @@ public class Reservation implements Serializable {
 	private byte closed;
 
 	@Column(name="room_id")
-	private int roomId;
+	private int room_id;
 
 	public Reservation() {
 	}
 
 	public int getResId() {
-		return this.resId;
+		return this.res_id;
 	}
 
 	public void setResId(int resId) {
-		this.resId = resId;
+		this.res_id = resId;
 	}
 
 	public byte getCancelled() {
@@ -75,11 +75,11 @@ public class Reservation implements Serializable {
 	}
 
 	public int getRoomId() {
-		return this.roomId;
+		return this.room_id;
 	}
 
 	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+		this.room_id = roomId;
 	}
 
 }

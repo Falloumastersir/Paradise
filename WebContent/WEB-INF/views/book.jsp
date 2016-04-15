@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %> 
 <%@ taglib uri= "http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -57,126 +57,108 @@
 </head>
 
 <body>
+
 <!-- start header -->
 <div class="header_bg">
-<div class="wrap">
-	<div class="header">
-		<div class="logo">
-			<a href="welcome"><img src="resources/images/logo.png" alt=""></a>
+		<div class="wrap">
+			<div class="header">
+				<div class="logo">
+					<a href="welcome"><img src="resources/images/logo.png" alt=""></a>
+				</div>
+				<div class="h_right">
+					<!--start menu -->
+					<ul class="menu">
+						<li><a href="welcome">Home</a></li> |
+						<li><a href="aboutUs">About us</a></li>|
+						<li class="active"><a href="book">Book a Room</a></li> |
+						<li><a href="gallery.html">Photo Gallery</a></li> |
+						<li><a href="activities.html">Map</a></li> |
+						<li><a href="contact">Contact Us</a></li>|
+						<li><a href="login">Login/SignUp</a></li>
+						<div class="clear"></div>
+					</ul>
+					<!-- start profile_details -->
+
+				</div>
+			</div>
 		</div>
-		<div class="h_right">
-			<!--start menu -->
-			<ul class="menu">
-				<li><a href="welcome">Home</a></li> |
-                <li><a href="aboutUs">About us</a></li>|
-				<li class="active"><a href="book">Book a Room</a></li> |
-				<li><a href="gallery.html">Photo Gallery</a></li> |
-				<li><a href="activities.html">Map</a></li> |
-				<li><a href="contact">Contact Us</a></li>|
-				 <li><a href="login">Login/SignUp</a></li>
-				<div class="clear"></div>
-			</ul>
-			<!-- start profile_details -->
+		<div class="clear"></div>
+</div> <!-- header ends -->
+             
+<!-- <div id="mainContainer"> -->
+             
+<!-- Side bar -->
+	<div class="sidebar">
+
+		<h4>New Search</h4>			
+				<form action="search" method="GET">
+					<select id="country" onchange="change_country(this.value)"
+						class="frm-field required" name="bedType">
+						<option>Type of room</option>
+						<option value="Suite Room">Suite room</option>
+						<option value="Single Room">Single room</option>
+						<option value="Double Room">Double room</option>
+					</select>
+
+					<h5>Check-in Date:</h5>
+					<div class="book_date">
+						<input class="date" name="checkIn" id="datepicker" type="text"
+							value="DD/MM/YY" onfocus="this.value = '';"
+							onblur="if (this.value == '') 
+                             {this.value = 'DD/MM/YY';}">
+					</div>
+
+					<h5>Check-out Date:</h5>
+					<div class="book_date">
+						<input class="date" id="datepicker1" type="text" name="checkOut"
+							value="DD/MM/YY" onfocus="this.value = '';"
+							onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
+					</div>
+
+					<h5>Number of Guest</h5>
+					<div class="section_room">
+						<select id="country" onchange="change_country(this.value)"
+							class="frm-field required" name="guestNum">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</div>
+
+					<div class="date_btn">
+						<input type="submit" value="Search" />
+					</div>
+				</form>
+			</div> <!-- Side bar ends -->
+
+	<!-- Show search result -->
+	<div class="roomContainer">
+		<c:forEach var="room" items="${searchResult}">
+			<div class="displayRoom">
+				<div class="roomImage">
+					<a href="#">
+						<img src="resources/images/${room.imageTitle}" alt=""  width="300", height="250" />					
+					</a>
+				</div>				
+					<h4>${room.roomType}
+					<span>$${room.price}</span>
+					</h4>
+					<p>${room.description}</p>
 					
-		</div>
-        </div>
-</div>
+					<div>
+						<form action="details">
+							<input type="submit" value="Select" style="width: 62px;">
+						</form>
+					</div>								
+			</div>
+		</c:forEach>
+	</div><!-- Search result end -->
 
-		<div class="clear"></div>
-</div>
-                 <div class="sidebar">
-			
-			<h4>Filter search</h4>
-			<ul class="s_nav">
-                            <h7>Price Range</h7>
-                            <li><label for="chk1"><a href="#"><input type="radio" name="chk1" id="chk1">$100-$300</a></label></li>
-                              <li><label for="chk2"><a href="#"><input type="radio" name="chk2" id="chk2">$100-$500</a></label></li>
-                            <li><label for="chk3"><a href="#"><input type="radio" name="chk3" id="chk3">$500-$1000</a></label></li>
-                            <li><label for="chk4"><a href="#"><input type="radio" name="chk4" id="chk4">$1000-$2000</a></label></li>
-                           
-                            <h7>Facilities</h7> 
-                             <li><label for="chk5"><a href="#"><input type="radio" name="chk5" id="chk5">Spa tub</a></label></li>
-                            <li><label for="chk7"><a href="#"><input type="radio" name="chk7" id="chk7">Breakfast</a></label></li>
-		            <li><label for="chk8"><a href="#"><input type="radio" name="chk8" id="chk8">Dinner</a></label></li>
-				
-                              
-                               <h7>Bed-Type</h7>
-                                <li><label for="chk9"><a href="#"><input type="radio" name="chk9" id="chk9">1 King</a></label></li>
-				 <li><label for="chk10"><a href="#"><input type="radio" name="chk10" id="chk10">1 Queen</a></label></li>
-                                  <li><label for="chk11"><a href="#"><input type="radio" name="chk11" id="chk11">2 Queens</a></label></li>
-                                  <li><label for="chk12"><a href="#"><input type="radio" name="chk12" id="chk12">Family Room</a></label></li>
-				
-			</ul>
-                         <div class="date_btn">
-				<form>
-					<input type="submit" value="Go" style="width: 62px;">
-				</form>
-			</div>
-			
-		</div>
- 
- 
-
-<!--start main -->
-<div class="grids_of_3">
-		<div class="grid1_of_3">
-			<div class="grid1_of_3_img">
-				<a href="details.html">
-					<img src="resources/images/pic2.jpg" alt="" />
-					<span class="next"> </span>
-				</a>
-			</div>
-			<div>
-			
-			</div>
+<!-- </div> mainContainer ends -->
+		   		   		  
 		   
-			<h4>Room Type: ${model} <span>120$</span></h4>
 			
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                          .</p>
-                        <div class="date_btn">
-				<form action="details">
-					<input type="submit" value="Select" style="width: 62px;">
-				</form>
-			</div>
-		</div>
-		<div class="grid1_of_3">
-			<div class="grid1_of_3_img">
-				<a href="details.html">
-					<img src="resources/images/pic1.jpg" alt="" />
-					<span class="next"> </span>
-				</a>
-			</div>
-			<h4><a href="#">double room<span>180$</span></a></h4>
-			<p>Lorem Ipsum is simply dummy text of the
-                            printing and typesetting industry. Lorem Ipsum has been the industry's
-                            standard dummy text ever since the 1500s</p>
-                         <div class="date_btn">
-				<form action="details">
-					<input type="submit" value="Select" style="width: 62px;">
-				</form>
-			</div>
-		</div>
-		<div class="grid1_of_3">
-			<div class="grid1_of_3_img">
-				<a href="details.html">
-					<img src="resources/images/pic3.jpg" alt="" />
-					<span class="next"> </span>
-				</a>
-			</div>
-			<h4><a href="#">suite room<span>210$</span></a></h4>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                        <div class="date_btn">
-				<form action="details">
-					<input type="submit" value="Select" style="width: 62px;">
-				</form>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>	
-
 <div class="footer_bg">
 <div class="wrap">
 <div class="footer">

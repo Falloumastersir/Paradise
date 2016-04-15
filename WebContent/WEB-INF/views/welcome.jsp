@@ -21,11 +21,7 @@
 <spring:url value="/resources/css/JFFormStyle-1.css" var="JFFormCSS" />
 <spring:url value="/resources/css/jquery-ui.css" var="jqueryUiCSS" />
 
-
-
-
 <spring:url value="/resources/js/jquery.min.js" var="JQuerymin" />
-
 <spring:url value="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" var="googleApi" /> 
 <spring:url value="/resources/js/jquery-ui.min.js" var="JQueryuimin" />
 <spring:url value="/resources/js/css3-mediaqueries.js" var="mediaqueries" />

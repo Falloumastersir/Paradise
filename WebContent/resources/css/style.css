@@ -37,15 +37,15 @@ body {
 	margin:0 auto;
 	width:80%;
 	-moz-transition:all .2s linear;
-	-webkit-transition:all .2s linear; 
-	-o-transition:all .2s linear; 
+	-webkit-transition:all .2s linear;
+	-o-transition:all .2s linear;
 	-ms-transition:all .2s linear;
 }
 .header_bg{
 	background: #191919;
 }
 .header{
-	padding: 2%;	
+	padding: 2%;
 }
 /* start logo */
 .logo{
@@ -70,7 +70,7 @@ body {
 	color: #ffffff;
 	line-height: 1.8em;
 	text-transform: capitalize;
-	font-size: 0.9725em;	
+	font-size: 0.9725em;
 	font-weight: 400;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
@@ -163,7 +163,7 @@ body {
 /* start booking_room */
 .online_reservation{
 	position: relative;
-	
+
 	z-index: 999; */
 }
 .b_room{
@@ -289,7 +289,7 @@ select option{
 =======
         width: 90% !important;
         display: inline-block;
-        
+
 }
 .date_btn1 form input[type="submit"] {
 	text-transform:capitalize;
@@ -338,22 +338,19 @@ select option{
 }
  */
 
->>>>>>> 38e66617856abccf8aac60267a58d1b4362c2abf
-/* start grids_of_3 */
-.grids_of_3{
+/*room display*/
+.roomContainer {
 	display: block;
-	padding: 4% 2% 12%;
+	padding: 1% 2% 12%;
 }
-.grid1_of_3{
-	float: left;
-	width: 30.333333%;
-	margin-left: 4.33333%;
 
+.displayRoom {
+	width: 22.333333%;
+	margin-left: 5.33333%;
+        padding-left: 1%;
 }
-.grid1_of_3:first-child{
-	margin-left: 0;
-}
-.grid1_of_3 h4 a{
+
+.displayRoom h4 a{
 	margin: 4% 0;
 	display:block;
 	font-size: 1.5em;
@@ -365,22 +362,27 @@ select option{
 	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
-.grid1_of_3 h4 span{
+
+.displayRoom h4 span{
 	font-weight: 600;
 	padding-left: 10px;
 	color: #202020;
 }
-.grid1_of_3 h4 a:hover{
-	color: #202020;
-}
-.grid1_of_3 p{
+
+.displayRoom p{
 	font-size: 0.8725em;
 	color: #6b6b6b;
 	line-height: 1.8em;
 }
-.grid1_of_3_img{
-		position: relative;	
+
+.displayRoom h4 a:hover{
+	color: #202020;
 }
+
+.roomImage {
+	position: relative;
+}
+
 /* start footer */
 .footer{
 	padding: 4% 2% 2%;
@@ -493,7 +495,7 @@ select option{
 	margin-right: 3.3333%;
 }
 .sidebar{
-        padding-top: 2px;
+  padding-top: 2px;
 	float: left;
 	width: 15.333333%;
 	padding-right: 1.3333%;
@@ -525,7 +527,7 @@ p.para{
 
 .sidebar h7{
     font-size: .94em;
-    
+
 }
 .s_nav li{
 	//border-bottom: 1px solid rgb(194, 194, 194);
@@ -537,7 +539,7 @@ p.para{
 	text-transform: capitalize;
 	font-size: 0.6725em;
 	color: #6b6b6b;
-	
+
 }
 .s_nav li a:hover{
 	color: #228AC6;
@@ -625,7 +627,7 @@ p.para{
 	width: 47.77777%;
 }
 .sel_room.left{
-	margin-left: 4.33333%;	
+	margin-left: 4.33333%;
 }
 .book_date.btm{
 	margin-bottom: 15px;
@@ -696,7 +698,7 @@ p.para{
 	transition: all 0.3s ease-in-out;
 }
 .service_list li h3:hover{
-	color: #52ABDF;	
+	color: #52ABDF;
 }
 .service_list li h4 a {
 	display: block;
@@ -823,7 +825,7 @@ span.next:hover {
 }
 .contact-form textarea{
 	resize:none;
-	height:120px;		
+	height:120px;
 }
 .contact-form input[type="submit"]{
 	margin-top: 10px;
@@ -968,7 +970,7 @@ span.next:hover {
 	}
 	.b_room form:form{
 		display: inline-block;
-	} 
+	}
 	.grid1_of_3 h4 a {
 		font-size: 1.4em;
 	}
@@ -1039,7 +1041,7 @@ span.next:hover {
 	.book_date input[type="text"] {
 		width: 96% !important;
 	}
-	
+
 	.reservation ul li.span1_of_3 {
 		width: 47.33333%;
 		margin-left: 10px;
@@ -1153,7 +1155,7 @@ span.next:hover {
 		padding: 10px;
 	}
 	.service_list li {
-		float:none;	
+		float:none;
 		margin-left:0;
 		width: 100%;
 		margin-bottom: 4%;
