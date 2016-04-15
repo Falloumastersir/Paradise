@@ -3,6 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %> 
 <%@ taglib uri= "http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -133,30 +134,37 @@
 
 	<!-- Show search result -->
 	<div class="roomContainer">
-		<c:forEach var="room" items="${searchResult}">
-			<div class="displayRoom">
-				<div class="roomImage">
-					<a href="#">
-						<img src="resources/images/${room.imageTitle}" alt=""  width="300", height="250" />					
-					</a>
-				</div>				
+
+		<c:if test="${empty searchResult}">
+			<h5>Sorry, no result found</h5>
+			<p>Try new search on the left</p>
+		</c:if>
+
+		<c:if test="${not empty searchResult}">
+			<c:forEach var="room" items="${searchResult}">
+				<div class="displayRoom">
+					<div class="roomImage">
+						<a href="#"> <img src="resources/images/${room.imageTitle}"
+							alt="" width="300" , height="250" />
+						</a>
+					</div>
 					<h4>${room.roomType}
-					<span>$${room.price}</span>
+						<span>$${room.price}</span>
 					</h4>
 					<p>${room.description}</p>
-					
+
 					<div>
 						<form action="details">
 							<input type="submit" value="Select" style="width: 62px;">
 						</form>
-					</div>								
-			</div>
-		</c:forEach>
-	</div><!-- Search result end -->
-
-<!-- </div> mainContainer ends -->
-		   		   		  
-		   
+					</div>
+				</div>
+			</c:forEach>
+		</c:if>	
+	</div>
+	<!-- Search result end -->
+	
+		   		   		  		   
 			
 <div class="footer_bg">
 <div class="wrap">
