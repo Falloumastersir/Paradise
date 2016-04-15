@@ -93,11 +93,10 @@
 		<h4>New Search</h4>			
 				<form action="search" method="GET">
 					<select id="country" onchange="change_country(this.value)"
-						class="frm-field required" name="bedType">
-						<option>Type of room</option>
-						<option value="Suite Room">Suite room</option>
-						<option value="Single Room">Single room</option>
-						<option value="Double Room">Double room</option>
+						class="frm-field required" name="bedType">						
+						<option value="Suite">Suite room</option>
+						<option value="Single">Single room</option>
+						<option value="Double">Double room</option>
 					</select>
 
 					<h5>Check-in Date:</h5>
