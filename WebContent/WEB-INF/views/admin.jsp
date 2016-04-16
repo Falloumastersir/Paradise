@@ -12,6 +12,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+<!-- Bootstrap -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <!-- add spring:url -->
 <spring:url value="/resources/css/style.css" var="styleCSS" />
 <spring:url value="/resources/css/fwslider.css" var="sliderCSS" />
@@ -59,6 +64,8 @@
 </head>
 
 <body>
+<div class="container">
+
 <!-- start header -->
 <div class="header_bg">
 <div class="wrap">
@@ -86,9 +93,18 @@
 		<div class="clear"></div>
 </div>
 
+<!-- Admin menu -->
+<div class=admin style="{border-style: solid, border-color: black}">
+	<button class="btn" data-toggle="collapse" data-target="#newRooms">Add New Rooms</button>
+	<button class="btn" data-toggle="collapse" data-target="#viewRooms">View All Rooms</button>
+
+
+</div>
+
+
 
 <!-- Adding a new room -->
-<div id=newRooms>
+<div id=newRooms class="collapse">
 	<form action="newRoom" method="GET">
 		Room Number
 		<input type="text" name="roomNumber"><br/>
@@ -137,7 +153,7 @@
 </div>
 
 <!-- View all rooms -->
-<div id=viewRooms>
+<div id=viewRooms class="collapse">
 	<table border="5">
 	
 	<c:forEach var="room" items="${roomList}">
@@ -216,6 +232,6 @@
 
 </div>
 
-
+</div>
 </body>
 </html>
