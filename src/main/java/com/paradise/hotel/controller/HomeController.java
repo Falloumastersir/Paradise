@@ -11,5 +11,10 @@ public class HomeController {
 	 public String welcome() {	    
 	    return "welcome";
 	 }
+	 
+	 @RequestMapping("/welcome")
+	 public String welcome2() {	    
+	    return "welcome";
+	 }
 	 	 
 }

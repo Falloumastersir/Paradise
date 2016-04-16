@@ -97,11 +97,32 @@
 <div class=admin style="{border-style: solid, border-color: black}">
 	<button class="btn" data-toggle="collapse" data-target="#newRooms">Add New Rooms</button>
 	<button class="btn" data-toggle="collapse" data-target="#viewRooms">View All Rooms</button>
+	<div class="dropdown">
+			<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Bookings By Floor<span class="caret"></span></button>
+				<ul class="dropdown-menu">
+					<li><a href="searchBooking/2" data-toggle="collapse" data-target="#f1Bookings">F1 (Single)</a></li>
+					<li><a href="searchBooking/3" data-toggle="collapse" data-target="#f2Bookings">F2 (Double)</a></li>
+					<li><a href="searchBooking/4" data-toggle="collapse" data-target="#f3Bookings">F3 (Suite)</a></li>
+				</ul>
+	</div>
 
 
 </div>
 
+<!-- 1st Floor bookings -->
+<div id=f1Bookings class="collapse">
+Hi
+</div>
 
+<!-- 2nd Floor bookings -->
+<div id=f2Bookings class="collapse">
+Hi
+</div>
+
+<!-- 3rd Floor bookings -->
+<div id=f3Bookings class="collapse">
+Hi
+</div>
 
 <!-- Adding a new room -->
 <div id=newRooms class="collapse">

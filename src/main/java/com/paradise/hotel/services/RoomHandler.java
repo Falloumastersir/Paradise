@@ -104,6 +104,40 @@ public class RoomHandler {
 		}        
         session.getTransaction().commit();
 	}
+
+	public List<Room> getRoomsbyFloor(int f) {
+		factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+        session.beginTransaction();
+        String strQuery = "from Room where roomNumber >" + (f*100) + " and roomNumber < " + ((f+1)*100);
+	 	Query query = session.createQuery(strQuery);	 	
+	 	List<Room> list = new ArrayList<Room>();
+		try {
+			list = query.list();			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("Error occurred");
+		}
+		session.getTransaction().commit();	
+		return list;
+	}
+
+	public List<Integer> getRoomNumbersByFloor(int floor) {
+		factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+        session.beginTransaction();
+        String strQuery = "from roomNumber where roomNumber >" + (floor*100) + " and roomNumber < " + ((floor+1)*100);
+	 	Query query = session.createQuery(strQuery);	 	
+	 	List<Integer> list = new ArrayList<Integer>();
+		try {
+			list = query.list();			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("Error occurred");
+		}
+		session.getTransaction().commit();			
+		return list;
+	}
 	
 	
 }

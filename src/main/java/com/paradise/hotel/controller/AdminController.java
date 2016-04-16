@@ -1,21 +1,27 @@
 package com.paradise.hotel.controller;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.paradise.hotel.entity.Reservation;
 import com.paradise.hotel.entity.Room;
 import com.paradise.hotel.services.RoomHandler;
+import com.paradise.hotel.services.SearchHandler;
 
 @Controller
 public class AdminController {
 	
 	//@Autowired
 	RoomHandler roomHand = new RoomHandler();	
+	SearchHandler searchHand = new SearchHandler();
 	
 	@RequestMapping("/admin")
 	 public ModelAndView listRoom() {
@@ -24,6 +30,20 @@ public class AdminController {
 		
 		return new ModelAndView("admin", "roomList", roomList);
 	 }
+	
+	@RequestMapping( "/searchBooking/{floor}" )
+	public String searchByFloor(@PathVariable int floor, ModelMap map) {		
+		List<Reservation> resListByFloor = new ArrayList<Reservation>();
+		try {
+			roomNumbers = roomHand.getRoomNumbersByFloor(floor);
+			resListByFloor = searchHand.getBookingsByRoom() 
+			
+		} catch ( Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return "admin";
+	}
 	
 	@RequestMapping(value="deleteRoom")
 	public String deleteRoom(@RequestParam("id") int id) {

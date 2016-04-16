@@ -16,9 +16,9 @@ public class Reservation implements Serializable {
 
 	@Id
 	@Column(name="res_id")
-	private int res_id;
+	private int resId;
 
-	private byte cancelled;
+	private Object cancelled;
 
 	@Temporal(TemporalType.DATE)
 	private Date checkIn;
@@ -26,27 +26,31 @@ public class Reservation implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date checkOut;
 
-	private byte closed;
+	private Object closed;
+
+	private int guestNum;
 
 	@Column(name="room_id")
-	private int room_id;
+	private int roomId;
+
+	private int roomNumber;
 
 	public Reservation() {
 	}
 
 	public int getResId() {
-		return this.res_id;
+		return this.resId;
 	}
 
 	public void setResId(int resId) {
-		this.res_id = resId;
+		this.resId = resId;
 	}
 
-	public byte getCancelled() {
+	public Object getCancelled() {
 		return this.cancelled;
 	}
 
-	public void setCancelled(byte cancelled) {
+	public void setCancelled(Object cancelled) {
 		this.cancelled = cancelled;
 	}
 
@@ -66,20 +70,36 @@ public class Reservation implements Serializable {
 		this.checkOut = checkOut;
 	}
 
-	public byte getClosed() {
+	public Object getClosed() {
 		return this.closed;
 	}
 
-	public void setClosed(byte closed) {
+	public void setClosed(Object closed) {
 		this.closed = closed;
 	}
 
+	public int getGuestNum() {
+		return this.guestNum;
+	}
+
+	public void setGuestNum(int guestNum) {
+		this.guestNum = guestNum;
+	}
+
 	public int getRoomId() {
-		return this.room_id;
+		return this.roomId;
 	}
 
 	public void setRoomId(int roomId) {
-		this.room_id = roomId;
+		this.roomId = roomId;
+	}
+
+	public int getRoomNumber() {
+		return this.roomNumber;
+	}
+
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 
 }
