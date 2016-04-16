@@ -142,8 +142,7 @@
 	
 	<c:forEach var="room" items="${roomList}">
 	
-		<tr>
-			<td><c:out value="${room.id}"></c:out></td>
+		<tr>			
 			<td><c:out value="${room.roomNumber}"></c:out></td>
 			<td><c:out value="${room.roomType}"></c:out></td>
 			<td><c:out value="${room.bedType}"></c:out></td>
@@ -151,9 +150,9 @@
 			<td><c:out value="${room.description}"></c:out></td>
 			<td><c:out value="${room.price}"></c:out></td>
 			<td>
-				<c:out value="${room.breakfast}">Breakfast</c:out>
-				<c:out value="${room.spa}">Spa</c:out>
-				<c:out value="${room.dinner}">Dinner</c:out>
+				<c:if test="${room.breakfast ==1}">Breakfast</c:if>
+				<c:if test="${room.spa == 1}">Spa</c:if>
+				<c:if test="${room.dinner == 1}">Dinner</c:if>								
 			</td>
 			<td><a href="#demo${room.id}" data-toggle="collapse"><button type="button" >EDIT</button></a> </td>
 			<td>
@@ -165,51 +164,45 @@
 		</tr>
 		
 		<!-- Collapsible section for editing a room -->			
-		<form action="editRoom" method="POST">
-		<input type="hidden" name="id" value="${room.id}">
 		<tr id="demo${room.id}" class="collapse">
-			<td>
-				<select name="roomType" >
-							<option >Room Type</option>
-				            <option value="Suite">Suite room</option>
-				            <option value="Single">Single room</option>
+				<form action="editRoom" method="POST">
+					<input type="hidden" name="id" value="${room.id}">
+					
+					<td><select name="roomType">
+							<option>Room Type</option>
+							<option value="Suite">Suite room</option>
+							<option value="Single">Single room</option>
 							<option value="Double">Double room</option>
-				</select>
-			</td>
-			<td>
-				<select name="bedType" >
-								<option>Bed Type</option>
-					            <option value="King">King</option>
-					            <option value="Queen">Queen</option>
-								<option value="Double">Double</option>
-				</select>
-			</td>
-			<td>
-				<select name="image" >
+					</select></td>
+					<td><select name="bedType">
+							<option>Bed Type</option>
+							<option value="King">King</option>
+							<option value="Queen">Queen</option>
+							<option value="Double">Double</option>
+					</select></td>
+					<td><select name="image">
 							<option>Image</option>
-				            <option value="single1.jpg">Single 1</option>
-				            <option value="single2.jpg">Single 2</option>
+							<option value="single1.jpg">Single 1</option>
+							<option value="single2.jpg">Single 2</option>
 							<option value="double1.jpg">Double 1</option>
 							<option value="double2.jpg">Double 2</option>
 							<option value="suite1.png">Suite 1</option>
 							<option value="suite2.jpg">Suite 2</option>
-				</select>
-			</td>
-			<td>
-				Room description
-				<textarea rows="4" cols="50" name="description" value="${room.description}"></textarea>
-			</td>	
-			<td>
-				Price <input type="text" name="price" value="${room.price}">
-			</td>	
-			<td>
-				Breakfast<input type="checkbox" name="amen"  value="breakfast">
-				Dinner<input type="checkbox" name="amen"  value="dinner">
-				Spa<input type="checkbox" name="amen"  value="spa">
-			</td>
-			<td> 
-			<input type="submit" value="Edit">
+					</select></td>
+					<td>Room description <textarea rows="4" cols="50"
+							name="description" value="${room.description}"></textarea>
+					</td>
+					<td>Price <input type="text" name="price"
+						value="${room.price}">
+					</td>
+					<td>Breakfast<input type="checkbox" name="amen"
+						value="breakfast"> Dinner<input type="checkbox"
+						name="amen" value="dinner"> Spa<input type="checkbox"
+						name="amen" value="spa">
+					</td>
+					<td><input type="submit" value="Edit">
 			</form>
+			
 			<form action="admin" >
 				<input type="submit" value="Cancel">
 			</form> 

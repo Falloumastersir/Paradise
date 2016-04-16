@@ -55,16 +55,17 @@ public class AdminController {
 			BigDecimal decPrice = new BigDecimal(price);
 			roomToEdit.setPrice(decPrice);
 			roomToEdit.setDescription(description);
+			
 			for (String a : amenities){
-	    		System.out.println(a);
-	    		if (a.equals("Breakfast")){ roomToEdit.setBreakfast((byte) 1); }
-	    			
-	    		if (a.equals("Dinner")){ roomToEdit.setDinner((byte)1); }
-	    			
-	    		if (a.equals("Spa")){ roomToEdit.setSpa((byte)1); }
+	    			System.out.println(a);
+		    		if (a.equals("breakfast")){ roomToEdit.setBreakfast((byte)1); }
+		    			
+		    		if (a.equals("dinner")){ roomToEdit.setDinner((byte)1); }
+		    			
+		    		if (a.equals("spa")){ roomToEdit.setSpa((byte)1); }
 	    		
 	    		roomHand.updateRoom(roomToEdit);
-	    }
+			}
 						
 		} catch (Exception ex)  {
 			ex.printStackTrace();
@@ -100,11 +101,11 @@ public class AdminController {
 		    } else {
 			    for (String a : amenities){
 			    		System.out.println(a);
-			    		if (a.equals("Breakfast")){ newRoom.setBreakfast((byte) 1); }
+			    		if (a.equals("breakfast")){ newRoom.setBreakfast((byte) 1); }
 			    			
-			    		if (a.equals("Dinner")){ newRoom.setDinner((byte)1); }
+			    		if (a.equals("dinner")){ newRoom.setDinner((byte)1); }
 			    			
-			    		if (a.equals("Spa")){ newRoom.setSpa((byte)1); }
+			    		if (a.equals("spa")){ newRoom.setSpa((byte)1); }
 			    }
 		    }
 		    		    		
