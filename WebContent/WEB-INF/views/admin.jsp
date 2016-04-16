@@ -100,28 +100,76 @@
 	<div class="dropdown">
 			<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Bookings By Floor<span class="caret"></span></button>
 				<ul class="dropdown-menu">
-					<li><a href="searchBooking/2" data-toggle="collapse" data-target="#f1Bookings">F1 (Single)</a></li>
-					<li><a href="searchBooking/3" data-toggle="collapse" data-target="#f2Bookings">F2 (Double)</a></li>
-					<li><a href="searchBooking/4" data-toggle="collapse" data-target="#f3Bookings">F3 (Suite)</a></li>
+					<li><a href="#" data-toggle="collapse" data-target="#f2Bookings">F1 (Single)</a></li>
+					<li><a href="#" data-toggle="collapse" data-target="#f3Bookings">F2 (Double)</a></li>
+					<li><a href="#" data-toggle="collapse" data-target="#f4Bookings">F3 (Suite)</a></li>
 				</ul>
 	</div>
 
 
 </div>
 
-<!-- 1st Floor bookings -->
-<div id=f1Bookings class="collapse">
-Hi
-</div>
-
 <!-- 2nd Floor bookings -->
-<div id=f2Bookings class="collapse">
-Hi
+<div id=f1Bookings class="collapse">
+2nd Floor
+	<table>
+		<tr>
+			<td>Room Number</td>
+			<td>Check In</td>
+			<td>Check Out</td>
+			<td>Number of Guest</td>
+		</tr>
+		<c:forEach var="booking" items="${floor2}">
+			<tr>
+				<td>${booking.roomNumber}</td>
+				<td>${booking.checkIn}</td>
+				<td>${booking.checkOut}</td>
+				<td>${booking.guestNum}</td>
+			</tr>	
+		</c:forEach>
+	</table>
 </div>
 
-<!-- 3rd Floor bookings -->
+<!-- 3nd Floor bookings -->
 <div id=f3Bookings class="collapse">
-Hi
+3rd Floor
+	<table>
+		<tr>
+			<td>Room Number</td>
+			<td>Check In</td>
+			<td>Check Out</td>
+			<td>Number of Guest</td>
+		</tr>
+		<c:forEach var="booking" items="${floor3}">
+			<tr>
+				<td>${booking.roomNumber}</td>
+				<td>${booking.checkIn}</td>
+				<td>${booking.checkOut}</td>
+				<td>${booking.guestNum}</td>
+			</tr>	
+		</c:forEach>
+	</table>
+</div>
+
+<!-- 4th Floor bookings -->
+<div id=f4Bookings class="collapse">
+4th Floor
+	<table>
+		<tr>
+			<td>Room Number</td>
+			<td>Check In</td>
+			<td>Check Out</td>
+			<td>Number of Guest</td>
+		</tr>
+		<c:forEach var="booking" items="${floor4}">
+			<tr>
+				<td>${booking.roomNumber}</td>
+				<td>${booking.checkIn}</td>
+				<td>${booking.checkOut}</td>
+				<td>${booking.guestNum}</td>
+			</tr>	
+		</c:forEach>
+	</table>
 </div>
 
 <!-- Adding a new room -->

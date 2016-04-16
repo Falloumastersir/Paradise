@@ -2,7 +2,11 @@ package com.paradise.hotel.entity;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.Cascade;
+
 import java.math.BigDecimal;
+import java.util.Set;
 
 
 /**
@@ -10,11 +14,11 @@ import java.math.BigDecimal;
  * 
  */
 @Entity
+@Table(name="Room")
 @NamedQuery(name="Room.findAll", query="SELECT r FROM Room r")
 public class Room implements Serializable {
 	private static final long serialVersionUID = 1L;
-
-	@Id
+	
 	private int id;
 
 	private String bedType;
@@ -35,13 +39,26 @@ public class Room implements Serializable {
 	private byte spa;
 	
 	private int roomNumber;
+	
 
 	public Room() {
 	}
 
+	@Id
+	@Column(name="id")
 	public int getId() {
 		return this.id;
 	}
+	
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinTable (			
+//			joinColumns = @JoinColumn(name="id"),
+//			inverseJoinColumns = @JoinColumn(name="room_id")
+//	)
+	
+//	public Set<Reservation> getReservations() {
+//		return reservations;
+//	}
 
 	public void setId(int id) {
 		this.id = id;

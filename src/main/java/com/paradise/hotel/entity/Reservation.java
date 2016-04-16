@@ -10,15 +10,16 @@ import java.util.Date;
  * 
  */
 @Entity
+@Table(name="Reservation")
 @NamedQuery(name="Reservation.findAll", query="SELECT r FROM Reservation r")
 public class Reservation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="res_id")
-	private int resId;
+	private int res_id;
 
-	private Object cancelled;
+	private byte cancelled;
 
 	@Temporal(TemporalType.DATE)
 	private Date checkIn;
@@ -26,12 +27,12 @@ public class Reservation implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date checkOut;
 
-	private Object closed;
+	private byte closed;
 
 	private int guestNum;
 
 	@Column(name="room_id")
-	private int roomId;
+	private int room_id;
 
 	private int roomNumber;
 
@@ -39,18 +40,18 @@ public class Reservation implements Serializable {
 	}
 
 	public int getResId() {
-		return this.resId;
+		return this.res_id;
 	}
 
 	public void setResId(int resId) {
-		this.resId = resId;
+		this.res_id = resId;
 	}
 
-	public Object getCancelled() {
+	public byte getCancelled() {
 		return this.cancelled;
 	}
 
-	public void setCancelled(Object cancelled) {
+	public void setCancelled(byte cancelled) {
 		this.cancelled = cancelled;
 	}
 
@@ -70,11 +71,11 @@ public class Reservation implements Serializable {
 		this.checkOut = checkOut;
 	}
 
-	public Object getClosed() {
+	public byte getClosed() {
 		return this.closed;
 	}
 
-	public void setClosed(Object closed) {
+	public void setClosed(byte closed) {
 		this.closed = closed;
 	}
 
@@ -87,11 +88,11 @@ public class Reservation implements Serializable {
 	}
 
 	public int getRoomId() {
-		return this.roomId;
+		return this.room_id;
 	}
 
 	public void setRoomId(int roomId) {
-		this.roomId = roomId;
+		this.room_id = roomId;
 	}
 
 	public int getRoomNumber() {

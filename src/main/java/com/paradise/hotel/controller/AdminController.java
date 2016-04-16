@@ -19,24 +19,23 @@ import com.paradise.hotel.services.SearchHandler;
 @Controller
 public class AdminController {
 	
+	
+	
 	//@Autowired
 	RoomHandler roomHand = new RoomHandler();	
 	SearchHandler searchHand = new SearchHandler();
 	
-	@RequestMapping("/admin")
-	 public ModelAndView listRoom() {
-				
-		List<Room> roomList = roomHand.getAllRooms();		
-		
-		return new ModelAndView("admin", "roomList", roomList);
-	 }
 	
 	@RequestMapping( "/searchBooking/{floor}" )
 	public String searchByFloor(@PathVariable int floor, ModelMap map) {		
 		List<Reservation> resListByFloor = new ArrayList<Reservation>();
+		List<Integer> roomWithNoBooking = new ArrayList<Integer>();
 		try {
-			roomNumbers = roomHand.getRoomNumbersByFloor(floor);
-			resListByFloor = searchHand.getBookingsByRoom() 
+			resListByFloor = searchHand.getBookings(floor);
+			map.addAttribute("resListByFloor", resListByFloor);
+			
+//			roomWithNoBooking = searchHand.getRoomsWithNoBooking();
+//			map.addAttribute("roomWithNoBooking", roomWithNoBooking);
 			
 		} catch ( Exception ex) {
 			ex.printStackTrace();
@@ -44,6 +43,29 @@ public class AdminController {
 		
 		return "admin";
 	}
+	
+	@RequestMapping("/admin")
+	 public String list(ModelMap map) {
+					
+		List<Room> roomList = roomHand.getAllRooms();
+		map.addAttribute("roomList", roomList);
+		
+		List<Reservation> floor2 = new ArrayList<Reservation>();
+		floor2 = searchHand.getBookings(2);
+		map.addAttribute("floor2", floor2);
+		
+		List<Reservation> floor3 = new ArrayList<Reservation>();
+		floor3 = searchHand.getBookings(3);
+		map.addAttribute("floor3", floor3);
+		
+		List<Reservation> floor4 = new ArrayList<Reservation>();
+		floor4 = searchHand.getBookings(4);
+		map.addAttribute("floor4", floor4);
+		
+		return "admin";
+	 }
+	
+	
 	
 	@RequestMapping(value="deleteRoom")
 	public String deleteRoom(@RequestParam("id") int id) {
@@ -91,7 +113,7 @@ public class AdminController {
 			ex.printStackTrace();
 		}
 		
-		return "admin";
+		return "redirect:admin";
 	}
 	
 	
