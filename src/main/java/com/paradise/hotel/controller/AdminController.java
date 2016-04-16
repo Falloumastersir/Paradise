@@ -94,14 +94,18 @@ public class AdminController {
 		    newRoom.setImageTitle(imageTitle);
 		    BigDecimal decPrice = new BigDecimal(price);
 		    newRoom.setPrice(decPrice);
-
-		    for (String a : amenities){
-		    		System.out.println(a);
-		    		if (a.equals("Breakfast")){ newRoom.setBreakfast((byte) 1); }
-		    			
-		    		if (a.equals("Dinner")){ newRoom.setDinner((byte)1); }
-		    			
-		    		if (a.equals("Spa")){ newRoom.setSpa((byte)1); }
+		    
+		    if (amenities==null) {
+		    		amenities = new String[0];
+		    } else {
+			    for (String a : amenities){
+			    		System.out.println(a);
+			    		if (a.equals("Breakfast")){ newRoom.setBreakfast((byte) 1); }
+			    			
+			    		if (a.equals("Dinner")){ newRoom.setDinner((byte)1); }
+			    			
+			    		if (a.equals("Spa")){ newRoom.setSpa((byte)1); }
+			    }
 		    }
 		    		    		
 			roomHand.addRoom(newRoom);

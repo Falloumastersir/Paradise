@@ -129,6 +129,7 @@
 		Breakfast<input type="checkbox" name="amen"  value="breakfast">
 		Dinner<input type="checkbox" name="amen"  value="dinner">
 		Spa<input type="checkbox" name="amen"  value="spa">
+		<input type="checkbox" name="amen" value="" checked="checked" style="display:none"/>
 		<br/>
 		<input type="submit" value="Register">
 	</form>
@@ -156,7 +157,7 @@
 			</td>
 			<td><a href="#demo${room.id}" data-toggle="collapse"><button type="button" >EDIT</button></a> </td>
 			<td>
-				<form action="deleteRoom" method="GET">
+				<form action="deleteRoom" method="POST"/>
 					<input type="hidden" name="id" value="${room.id}">
 					<input type="submit" value="Delete">
 				</form>
@@ -164,7 +165,7 @@
 		</tr>
 		
 		<!-- Collapsible section for editing a room -->			
-		<form action="editRoom" method="GET">
+		<form action="editRoom" method="POST">
 		<input type="hidden" name="id" value="${room.id}">
 		<tr id="demo${room.id}" class="collapse">
 			<td>
