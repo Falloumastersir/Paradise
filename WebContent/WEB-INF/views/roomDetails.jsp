@@ -159,36 +159,7 @@
 			<br />
 			<br />
 			<div class="date_btn2">
-			<button class="btn" data-toggle="collapse" data-target="#bookingsByDate">Bookings By Date</button>
-			<div id="bookingsByDate" class="collapse">
-	<form action="searchBookings" method="POST" >	
-			<ul>				
-				<li  class="span1_of_1 left">
-					<h5>check-in-date:</h5>
-					<div class="book_date">						
-							<input class="date" name="checkIn"
-                             id="datepicker" type="text" value="DD/MM/YY" 
-                             onfocus="this.value = '';" onblur="if (this.value == '') 
-                             {this.value = 'DD/MM/YY';}">						
-					</div>					
-				</li>
-				<li  class="span1_of_1 left">
-					<h5>check-out-date:</h5>
-					<div class="book_date">						
-							<input class="date" id="datepicker1" type="text" name="checkOut"
-							value="DD/MM/YY" onfocus="this.value = '';" 
-							onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">						
-					</div>		
-				</li>				
-				<li class="span1_of_3">
-					<div class="date_btn">                                       
-							<input type="submit" value="Search Bookings" />						
-					</div>
-				</li>
-				<div class="clear"></div>
-			</ul>
-			</form>
-</div>			
+			<button class="btn" data-toggle="collapse" data-target="#bookingsByDate">Bookings By Date</button>			
 				<button class="btn" data-toggle="collapse" data-target="#detailConfirm">Confirm</button>
 					<div id="detailConfirm" class="collapse">
 						<div id="roomDetails">

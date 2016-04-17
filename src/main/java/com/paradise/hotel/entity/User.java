@@ -5,39 +5,41 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the User database table.
+ * The persistent class for the Users database table.
  * 
  */
 @Entity
+@Table(name="Users")
 @NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
-	
-	public User(String username, String password, String name) {
-		super();
-		this.name = name;
-		this.password = password;
-		this.username = username;
-	}
-
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private byte id;
+	private int id;
 
 	private String name;
 
 	private String password;
+
+	@Column(name="res_id")
+	private int res_id;
 
 	private String username;
 
 	public User() {
 	}
 
-	public byte getId() {
+	public User(String username, String pwd, String nm) {
+		this.username = username;
+		this.password = pwd;
+		this.name = nm;
+	}
+
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(byte id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -55,6 +57,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public int getResId() {
+		return this.res_id;
+	}
+
+	public void setResId(int resId) {
+		this.res_id = resId;
 	}
 
 	public String getUsername() {

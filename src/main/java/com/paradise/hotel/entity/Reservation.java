@@ -6,11 +6,11 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the reservation database table.
+ * The persistent class for the Reservations database table.
  * 
  */
 @Entity
-@Table(name="Reservation")
+@Table(name="Reservations")
 @NamedQuery(name="Reservation.findAll", query="SELECT r FROM Reservation r")
 public class Reservation implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -35,6 +35,9 @@ public class Reservation implements Serializable {
 	private int room_id;
 
 	private int roomNumber;
+
+	@Column(name="user_id")
+	private int user_id;
 
 	public Reservation() {
 	}
@@ -101,6 +104,14 @@ public class Reservation implements Serializable {
 
 	public void setRoomNumber(int roomNumber) {
 		this.roomNumber = roomNumber;
+	}
+
+	public int getUserId() {
+		return this.user_id;
+	}
+
+	public void setUserId(int userId) {
+		this.user_id = userId;
 	}
 
 }

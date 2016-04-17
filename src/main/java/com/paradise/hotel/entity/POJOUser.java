@@ -17,7 +17,9 @@ public class POJOUser {
 	@NotEmpty
 	@Size(min=4, max=20)
 	private String name;
-
+	
+	
+	
 	public String getPassword() {
 		return password;
 	}

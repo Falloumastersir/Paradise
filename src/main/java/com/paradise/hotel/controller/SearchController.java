@@ -13,13 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.paradise.hotel.entity.Reservation;
 import com.paradise.hotel.entity.Room;
+import com.paradise.hotel.services.RoomHandler;
 import com.paradise.hotel.services.SearchHandler;
 
 @Controller
 public class SearchController {
 
 	SearchHandler searchHand = new SearchHandler();
-		
+	RoomHandler roomHand = new RoomHandler();
+	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public ModelAndView searchRoom(
 			@RequestParam("bedType") String bedType,
@@ -38,6 +40,24 @@ public class SearchController {
 		httpSession.setAttribute("checkOut", co);
 		
 		return new ModelAndView("book", "searchResult", searchResult);
+	}
+	
+	@RequestMapping(value="/details", method=RequestMethod.GET)
+	public String viewDetails(@RequestParam("roomID") int roomID,
+			@RequestParam("roomNumber") int roomNumber,
+			Model model, HttpSession httpSession) {
+		
+		try {
+			httpSession.setAttribute("selectedRoomID", roomID);
+			httpSession.setAttribute("selectedRoomNumber", roomNumber);
+			Room room = roomHand.getRoomById(roomID);
+			model.addAttribute("room", room);
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}			
+		
+		return "roomDetails";
 	}
 	
 	public String changeDate(String date) {		

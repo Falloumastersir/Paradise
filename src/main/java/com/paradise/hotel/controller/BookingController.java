@@ -24,45 +24,85 @@ public class BookingController {
 			@RequestParam("currentPage") String currentPage,
 			HttpSession httpSession) throws ParseException{
 		
-		// check logged-in user
-		if (httpSession.getAttribute("username")!=null) {
-			String whostheuser = (String) httpSession.getAttribute("username");
-			System.out.println(whostheuser);
-			
-			int roomId = (Integer) httpSession.getAttribute("selectedRoomID");
-			int roomNumber = (Integer) httpSession.getAttribute("selectedRoomNumber");
-			String checkIn = (String) httpSession.getAttribute("checkIn");
-			String checkOut = (String) httpSession.getAttribute("checkOut");
-			int guestNum = Integer.parseInt((String) httpSession.getAttribute("guestNum"));	
-						
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-			Date checkInDate = new Date();
-			Date checkOutDate = new Date();
-			try {
-				checkInDate = formatter.parse(checkIn);
-				checkOutDate = formatter.parse(checkOut);
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-			
-			try {
-				Reservation newRes = new Reservation();
-				newRes.setRoomId(roomId);
-				newRes.setRoomNumber(roomNumber);
-				newRes.setCheckIn(checkInDate);
-				newRes.setCheckOut(checkOutDate);
-				newRes.setGuestNum(guestNum);
-				bookingHand.addBooking(newRes);
+		// booking testing without log-in for now
+		String userName = "megrim";
 				
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}											
-			return "confirm";
+		int roomId = (Integer) httpSession.getAttribute("selectedRoomID");
+		int roomNumber = (Integer) httpSession.getAttribute("selectedRoomNumber");
+		String checkIn = (String) httpSession.getAttribute("checkIn");
+		String checkOut = (String) httpSession.getAttribute("checkOut");
+		int guestNum = Integer.parseInt((String) httpSession.getAttribute("guestNum"));	
+					
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date checkInDate = new Date();
+		Date checkOutDate = new Date();
+		try {
+			checkInDate = formatter.parse(checkIn);
+			checkOutDate = formatter.parse(checkOut);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
-		} else {
-			httpSession.setAttribute("previousPage", currentPage);
-			return "login";
-		}				
+		try {
+			int userID = bookingHand.getUserID(userName);
+			Reservation newRes = new Reservation();
+			newRes.setRoomId(roomId);
+			newRes.setRoomNumber(roomNumber);
+			newRes.setCheckIn(checkInDate);
+			newRes.setCheckOut(checkOutDate);
+			newRes.setGuestNum(guestNum);
+			newRes.setUserId((byte) userID);
+			System.out.println((byte)userID);
+		
+			bookingHand.addBooking(newRes);
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}											
+		return "confirm";
+		
+		
+		// check logged-in user
+//		if (httpSession.getAttribute("username")!=null) {
+//			String userName = (String) httpSession.getAttribute("username");
+//			System.out.println(userName);			
+//			int roomId = (Integer) httpSession.getAttribute("selectedRoomID");
+//			int roomNumber = (Integer) httpSession.getAttribute("selectedRoomNumber");
+//			String checkIn = (String) httpSession.getAttribute("checkIn");
+//			String checkOut = (String) httpSession.getAttribute("checkOut");
+//			int guestNum = Integer.parseInt((String) httpSession.getAttribute("guestNum"));	
+//						
+//			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//			Date checkInDate = new Date();
+//			Date checkOutDate = new Date();
+//			try {
+//				checkInDate = formatter.parse(checkIn);
+//				checkOutDate = formatter.parse(checkOut);
+//			} catch (ParseException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			try {
+//				int userID = bookingHand.getUserID(userName);
+//				Reservation newRes = new Reservation();
+//				newRes.setRoomId(roomId);
+//				newRes.setRoomNumber(roomNumber);
+//				newRes.setCheckIn(checkInDate);
+//				newRes.setCheckOut(checkOutDate);
+//				newRes.setGuestNum(guestNum);
+//				newRes.setUserId((byte) userID);
+//			
+//				bookingHand.addBooking(newRes);
+//				
+//			} catch (Exception ex) {
+//				ex.printStackTrace();
+//			}											
+//			return "confirm";
+//		
+//		} else {
+//			httpSession.setAttribute("previousPage", currentPage);
+//			return "login";
+//		}				
 	}
 }
 
