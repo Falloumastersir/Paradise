@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %> 
 <%@ taglib uri= "http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -84,64 +84,78 @@
 <div class="clear"></div>
 </div>
 
-  
-     <div class="sidebar">
-			
-			<h4>Filter search</h4>
-			<ul class="s_nav">
-                            <h7>Price Range</h7>
-                            <li><label for="chk1"><a href="#"><input type="radio" name="chk1" id="chk1">$100-$300</a></label></li>
-                              <li><label for="chk2"><a href="#"><input type="radio" name="chk2" id="chk2">$100-$500</a></label></li>
-                            <li><label for="chk3"><a href="#"><input type="radio" name="chk3" id="chk3">$500-$1000</a></label></li>
-                            <li><label for="chk4"><a href="#"><input type="radio" name="chk4" id="chk4">$1000-$2000</a></label></li>
-                           
-                            <h7>Facilities</h7> 
-                             <li><label for="chk5"><a href="#"><input type="radio" name="chk5" id="chk5">Spa tub</a></label></li>
-                            <li><label for="chk7"><a href="#"><input type="radio" name="chk7" id="chk7">Breakfast</a></label></li>
-		            <li><label for="chk8"><a href="#"><input type="radio" name="chk8" id="chk8">Dinner</a></label></li>
-				
-                              
-                               <h7>Bed-Type</h7>
-                                <li><label for="chk9"><a href="#"><input type="radio" name="chk9" id="chk9">1 King</a></label></li>
-				 <li><label for="chk10"><a href="#"><input type="radio" name="chk10" id="chk10">1 Queen</a></label></li>
-                                  <li><label for="chk11"><a href="#"><input type="radio" name="chk11" id="chk11">2 Queens</a></label></li>
-                                  <li><label for="chk12"><a href="#"><input type="radio" name="chk12" id="chk12">Family Room</a></label></li>
-				
-			</ul>
-                         <div class="date_btn">
-				<form>
-					<input type="submit" value="Go" style="width: 62px;">
+<!-- Side bar -->
+	<div class="sidebar">
+
+		<h4>New Search</h4>			
+				<form action="search" method="GET">
+					<select id="country" onchange="change_country(this.value)"
+						class="frm-field required" name="bedType">						
+						<option value="Suite">Suite room</option>
+						<option value="Single">Single room</option>
+						<option value="Double">Double room</option>
+					</select>
+
+					<h5>Check-in Date:</h5>
+					<div class="book_date">
+						<input class="date" name="checkIn" id="datepicker" type="text"
+							value="DD/MM/YY" onfocus="this.value = '';"
+							onblur="if (this.value == '') 
+                             {this.value = 'DD/MM/YY';}">
+					</div>
+
+					<h5>Check-out Date:</h5>
+					<div class="book_date">
+						<input class="date" id="datepicker1" type="text" name="checkOut"
+							value="DD/MM/YY" onfocus="this.value = '';"
+							onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
+					</div>
+
+					<h5>Number of Guest</h5>
+					<div class="section_room">
+						<select id="country" onchange="change_country(this.value)"
+							class="frm-field required" name="guestNum">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+						</select>
+					</div>
+
+					<div class="date_btn">
+						<input type="submit" value="Search" />
+					</div>
+				</form>
+	</div> <!-- Side bar ends -->
+
+
+
+	<div id="content">
+
+		<c:if test="${not empty room}">
+
+			<p>${room.roomType}</p>
+			<br />
+			<br />
+			<p>${room.price}</p>
+			<br />
+			<br />
+			<p>${room.description})</p>
+			<br />
+			<p><img src="resources/images/${room.imageTitle}" alt="" /></p>
+			<br />
+			<br />
+			<div class="date_btn2">
+				<form action="confirm">
+					<input type="submit" value="Confirm" size="50px">
 				</form>
 			</div>
-			
-		</div>
-    
-     <div id="content">
-        <p> Room name </p><br />
-        <br />
-        <p> Price </p> <br />
-        <br />
-        <p> Available dates </p><br />
-        <br />
-        <br />
-       <div class="date_btn2">
-				<form action="confirm">
-					<input type="submit" value="Confirm" size="50px" >
-				</form>
-           <br />
-           <br />
-           <br />
-           <br />
-           <br />
-           <br />
-	
-        
-    </div>
+		</c:if>
+	</div>
 
-     </div>
-     
-    
-    <div id="sliderFrame" >
+
+
+	<!-- <div id="sliderFrame" >
         <div id="slider">
             
             <img src="resources/images/i1.jpg" alt="" />
@@ -152,15 +166,8 @@
             
         </div>
         
-     </div>
+     </div> -->
      
-      
-   
-        	 <div id="details">
-            
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
-                          .</p>
-        </div>	
+      	 
 
 </html>

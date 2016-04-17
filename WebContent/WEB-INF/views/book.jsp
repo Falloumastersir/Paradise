@@ -155,7 +155,8 @@
 
 					<div>
 						<form action="details">
-							<input type="submit" value="Select" style="width: 62px;">
+							<input type="hidden" name="room" value="${room.id}">
+							<input type="submit" name="room" value="Select" style="width: 62px;">
 						</form>
 					</div>
 				</div>

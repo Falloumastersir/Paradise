@@ -2,6 +2,8 @@ package com.paradise.hotel.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +25,15 @@ public class SearchController {
 			@RequestParam("bedType") String bedType,
 			@RequestParam("checkIn") String checkIn,
 			@RequestParam("checkOut") String checkOut,
-			@RequestParam("guestNum") String guestNum
+			@RequestParam("guestNum") String guestNum,
+			HttpSession httpSession
 			) {
 		
 		String ci = changeDate(checkIn);
 		String co = changeDate(checkOut);	
-		List<Room> searchResult = searchHand.getAvailableRooms(ci, co, bedType);		
+		List<Room> searchResult = searchHand.getAvailableRooms(ci, co, bedType);
+		
+		httpSession.setAttribute("guestNum", guestNum);
 		
 		return new ModelAndView("book", "searchResult", searchResult);
 	}
