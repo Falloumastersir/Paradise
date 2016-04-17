@@ -75,7 +75,8 @@
 				<li><a href="book">Book a Room</a></li> |
 				<li><a href="gallery">Photo Gallery</a></li> |
 				<li><a href="contact">Contact Us</a></li>|
-				<li><a href="loginPage">Login/SignUp</a></li> 
+				<li><a href="loginPage">Login/SignUp</a></li>
+				<li><a href="adminLogin">Admin</a></li> 
 				<div class="clear"></div>
 			</ul>
 			<!-- start profile_details -->

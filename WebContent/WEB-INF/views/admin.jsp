@@ -97,6 +97,8 @@
 <div class=admin style="{border-style: solid, border-color: black}">
 	<button class="btn" data-toggle="collapse" data-target="#newRooms">Add New Rooms</button>
 	<button class="btn" data-toggle="collapse" data-target="#viewRooms">View All Rooms</button>
+	<button class="btn" data-toggle="collapse" data-target="#bookingsByDate">Bookings By Date</button>
+	
 	<div class="dropdown">
 			<button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Bookings By Floor<span class="caret"></span></button>
 				<ul class="dropdown-menu">
@@ -106,11 +108,61 @@
 				</ul>
 	</div>
 
+</div>
+<!-- Admin menu ends -->
 
+<div id="bookingsByDate" class="collapse">
+	<form action="searchBookings" method="POST" >	
+			<ul>				
+				<li  class="span1_of_1 left">
+					<h5>check-in-date:</h5>
+					<div class="book_date">						
+							<input class="date" name="checkIn"
+                             id="datepicker" type="text" value="DD/MM/YY" 
+                             onfocus="this.value = '';" onblur="if (this.value == '') 
+                             {this.value = 'DD/MM/YY';}">						
+					</div>					
+				</li>
+				<li  class="span1_of_1 left">
+					<h5>check-out-date:</h5>
+					<div class="book_date">						
+							<input class="date" id="datepicker1" type="text" name="checkOut"
+							value="DD/MM/YY" onfocus="this.value = '';" 
+							onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">						
+					</div>		
+				</li>				
+				<li class="span1_of_3">
+					<div class="date_btn">                                       
+							<input type="submit" value="Search Bookings" />						
+					</div>
+				</li>
+				<div class="clear"></div>
+			</ul>
+			</form>
 </div>
 
+<c:if test="${not empty bookings}">
+	<table>
+		<tr>
+			<td>Room Number</td>
+			<td>Check In</td>
+			<td>Check Out</td>
+			<td>Number of Guest</td>
+		</tr>
+		<c:forEach var="booking" items="${bookings}">
+			<tr>
+				<td>${booking.roomNumber}</td>
+				<td>${booking.checkIn}</td>
+				<td>${booking.checkOut}</td>
+				<td>${booking.guestNum}</td>
+			</tr>	
+		</c:forEach>	
+	</table>
+</c:if>
+
+
 <!-- 2nd Floor bookings -->
-<div id=f1Bookings class="collapse">
+<div id=f2Bookings class="collapse">
 2nd Floor
 	<table>
 		<tr>

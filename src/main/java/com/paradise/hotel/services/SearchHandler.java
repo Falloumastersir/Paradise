@@ -106,4 +106,26 @@ public class SearchHandler {
 		session.getTransaction().commit();
 		return roomNumberList;
 	}
+
+	public List<Reservation> getBookings(String checkIn, String checkOut) {
+		factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		
+		String queryStr = "from Reservation where " 
+				+ "(checkIn < '" + checkOut + "' AND checkIn > '" + checkIn + "')"
+				+ " OR "
+				+ "(checkOut < '" + checkOut + "' AND checkOut > '" + checkIn + "') "
+				+ "ORDER BY roomNumber";				
+		Query query = session.createQuery(queryStr);
+		List<Reservation> bookings = new ArrayList<Reservation>();
+		try {			
+			bookings = query.list();			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("Error occured during getting available rooms");
+		}	
+		session.getTransaction().commit();
+		return bookings;
+	}
 }
