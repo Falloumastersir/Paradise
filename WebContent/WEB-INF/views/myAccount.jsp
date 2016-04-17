@@ -1,10 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %> 
 <%@ taglib uri= "http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@page session="true"%>
- <%@page import="com.paradise.hotel.entity.User"%>
-  <%@page import="com.paradise.hotel.services.LoginServiceImpl"%>
 
 <!DOCTYPE html>
 
@@ -14,6 +13,11 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- For error messages -->
+<fmt:setBundle basename="messages" />
+<fmt:message key="message.password" var="noPass" />
+<fmt:message key="message.username" var="noUser" />
 
 <!-- add spring:url -->
 <spring:url value="/resources/css/style.css" var="styleCSS" />
@@ -36,6 +40,7 @@
 <spring:url value="/resources/js/JFForms.js" var="JFForm" />
 <spring:url value="/resources/js/jquery-ui.js" var="jqueryui" />
 <spring:url value="/resources/js/script.js" var="script" />
+<spring:url value="/resources/js/LoginValidaiton.js" var="validation" />
 
 
 
@@ -59,6 +64,7 @@
 <script src="${JFForm}"></script>
 <script src="${jqueryui}"></script>
 <script src="${script}"></script>
+<script src="${validation}"></script>
 
 </head>
 <body>
@@ -73,11 +79,9 @@
 			<!--start menu -->
 			<ul class="menu">
 				<li><a href="welcome">Home</a></li> |
-                <li><a href="aboutUs">About Us</a></li> |
+                <li><a href="index.html">About Us</a></li> |
 				<li><a href="gallery">Gallery</a></li> |
-				
-                <li><a href="contact">Contact Us</a></li>
-			    
+			    <li><a href="contact">Contact Us</a></li>
 			    <li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${name}</a></li>
 				<div class="clear"></div>
 			</ul>
@@ -89,20 +93,27 @@
 
     <div class="clear"></div>
 </div>
+      
 <div id="loginMain">
      <img src="resources/images/confirm.jpg" alt=""/>
        <div class="wrapper">
 	<div class="container">
-         <h1>Confirmation page</h1>
-             <b>Thank you!</b><br/>
-             <c:out value="${name}"></c:out>
-             <br/>
-             <b>Here are your Confirmation details: </b>
-             <br />
-            
-             To go back to our Home page  <a href="welcome">Click Here</a>
-         </div>
-
+	 
+		<h3>Hey <c:out value="${name}"></c:out></h3>
+		<h3>You can change your booking</h3>
+		<form:form  class="form" action="myAccountController" method="POST" >
+	                <h5>Here are your currently booking details:</h5>
+	                
+	                
+                       <button type="submit" id="login-button" >Change</button>
+                       
+                
+		</form:form>
+		<form:form action="logout" method="POST">
+		 <button type="submit" id="login-button" >Logout</button>
+                 </form:form>
+	</div>
+	
 </div>
 </div>
 

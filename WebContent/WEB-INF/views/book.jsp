@@ -155,7 +155,8 @@
 
 					<div>
 						<form action="details">
-							<input type="hidden" name="room" value="${room.id}">
+							<input type="hidden" name="roomID" value="${room.id}">
+							<input type="hidden" name="roomNumber" value="${room.roomNumber}">
 							<input type="submit" name="room" value="Select" style="width: 62px;">
 						</form>
 					</div>

@@ -17,10 +17,13 @@ public class DetailsController {
 	RoomHandler roomHand = new RoomHandler();
 	 
 	@RequestMapping(value="/details", method=RequestMethod.GET)
-	public String viewDetails(@RequestParam("room") int roomID, Model model, HttpSession httpSession) {
+	public String viewDetails(@RequestParam("roomID") int roomID,
+			@RequestParam("roomNumber") int roomNumber,
+			Model model, HttpSession httpSession) {
 		
 		try {
-			httpSession.setAttribute("selectedRoom", roomID);
+			httpSession.setAttribute("selectedRoomID", roomID);
+			httpSession.setAttribute("selectedRoomNumber", roomNumber);
 			Room room = roomHand.getRoomById(roomID);
 			model.addAttribute("room", room);
 			

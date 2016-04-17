@@ -74,11 +74,9 @@
 			<ul class="menu">
 				<li><a href="welcome">Home</a></li> |
                 <li><a href="aboutUs">About Us</a></li> |
-				<li><a href="gallery">Gallery</a></li> |
-				
+				<li><a href="gallery">Photo Gallery</a></li> |
                 <li><a href="contact">Contact Us</a></li>
-			    
-			    <li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${name}</a></li>
+			   
 				<div class="clear"></div>
 			</ul>
 			<!-- start profile_details -->
@@ -89,21 +87,21 @@
 
     <div class="clear"></div>
 </div>
-<div id="loginMain">
+        <div id="loginMain">
      <img src="resources/images/confirm.jpg" alt=""/>
        <div class="wrapper">
 	<div class="container">
-         <h1>Confirmation page</h1>
-             <b>Thank you!</b><br/>
-             <c:out value="${name}"></c:out>
-             <br/>
-             <b>Here are your Confirmation details: </b>
-             <br />
-            
-             To go back to our Home page  <a href="welcome">Click Here</a>
-         </div>
+      <%     
+         session.removeAttribute("username");
+         session.removeAttribute("password");
+         System.out.print("User removed" + session.getAttribute("username"));
+         session.invalidate();
+       
+     %>
 
+     <h1>You have successfully logged out</h1>
+    To Go back to our Home page <a href="welcome">click here</a>.
 </div>
 </div>
-
+</div>
 </html>

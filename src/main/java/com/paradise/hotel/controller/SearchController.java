@@ -34,6 +34,8 @@ public class SearchController {
 		List<Room> searchResult = searchHand.getAvailableRooms(ci, co, bedType);
 		
 		httpSession.setAttribute("guestNum", guestNum);
+		httpSession.setAttribute("checkIn", ci);
+		httpSession.setAttribute("checkOut", co);
 		
 		return new ModelAndView("book", "searchResult", searchResult);
 	}

@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %> 
 <%@ taglib uri= "http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 
@@ -10,6 +13,11 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- For error messages -->
+<fmt:setBundle basename="messages" />
+<fmt:message key="message.password" var="noPass" />
+<fmt:message key="message.username" var="noUser" />
 
 <!-- add spring:url -->
 <spring:url value="/resources/css/style.css" var="styleCSS" />
@@ -32,6 +40,7 @@
 <spring:url value="/resources/js/JFForms.js" var="JFForm" />
 <spring:url value="/resources/js/jquery-ui.js" var="jqueryui" />
 <spring:url value="/resources/js/script.js" var="script" />
+<spring:url value="/resources/js/LoginValidaiton.js" var="validation" />
 
 
 
@@ -55,6 +64,7 @@
 <script src="${JFForm}"></script>
 <script src="${jqueryui}"></script>
 <script src="${script}"></script>
+<script src="${validation}"></script>
 
 </head>
 <body>
@@ -91,19 +101,25 @@
        <div class="wrapper">
 	<div class="container">
 	 
-		<h1>Welcome</h1>
+		<h3>Please Login to Book the Room</h3>
 		
-		<form:form class="form" action="loginController" method="POST" >
+		<form:form  name="f" class="form" action="loginController" method="POST" >
+	
 		
             <input type="text" placeholder="Name" name="name">
+            <c:out value="${userNameError}"></c:out>
 			<input type="text" placeholder="Username" name="username">
 			<input type="password" placeholder="Password" name="password">
                        
-                       <button type="submit" id="login-button" name="login">Login</button>
-                       
-                        <button type="submit" id="login-button" name="cancel">Cancel</button>
+                       <button type="submit" id="login-button" >Login</button>
+                 
 		</form:form>
-		
+		<form:form action="cancel">
+                        <button type="submit" id="login-button" >Cancel</button>
+                        </form:form> 
+                                  
+                        
+   
 		<span class="login-box-options">
 New User?  <a href="registerPage" style="margin-left:30px;">Register Here</a>
 </span>

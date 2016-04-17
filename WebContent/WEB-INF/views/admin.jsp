@@ -14,7 +14,6 @@
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!-- add spring:url -->
@@ -24,7 +23,6 @@
 <spring:url value="/resources/css/JFGrid.css" var="JFGridCSS" />
 <spring:url value="/resources/css/JFFormStyle-1.css" var="JFFormCSS" />
 <spring:url value="/resources/css/js-image-slider.css" var="imageSliderCSS" />
-<%-- <spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" var="bootstrap" /> --%>
 
 <spring:url value="/resources/js/jquery.min.js" var="JQuerymin" />
 <spring:url value="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" var="googleApi" />
@@ -35,7 +33,6 @@
 <spring:url value="/resources/js/JFForms.js" var="JFForm" />
 <spring:url value="/resources/js/jquery-ui.js" var="jqueryui" />
 <spring:url value="/resources/js/script.js" var="script" />
-<%-- <spring:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" var="bootstrapJS" /> --%>
 <!-- end spring:url -->
 
 <link href="${sliderCSS}" rel="stylesheet" media="all" />

@@ -12,6 +12,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+<!-- Bootstrap -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <!-- add spring:url -->
 <spring:url value="/resources/css/style.css" var="styleCSS" />
 <spring:url value="/resources/css/fwslider.css" var="sliderCSS" />
@@ -55,6 +59,12 @@
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 
+
+<!-- Collapsible table -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- Collapsing test -->
 </head>
 
 <body>
@@ -133,22 +143,68 @@
 	<div id="content">
 
 		<c:if test="${not empty room}">
-
+			<p>
+			<p>
+			<p><img src="resources/images/${room.imageTitle}" alt="" width="800px" heigh="533px"/></p>
 			<p>${room.roomType}</p>
-			<br />
-			<br />
+			<br />			
 			<p>${room.price}</p>
-			<br />
-			<br />
+			<br />			
 			<p>${room.description})</p>
 			<br />
-			<p><img src="resources/images/${room.imageTitle}" alt="" /></p>
+			<p>Amenities</p>
+			<c:if test="${room.breakfast==1}">Breakfast</c:if> </br>
+			<c:if test="${room.dinner==1}">Dinner</c:if> </br>
+			<c:if test="${room.spa==1}">Spa</c:if> </br>
 			<br />
 			<br />
 			<div class="date_btn2">
-				<form action="confirm">
-					<input type="submit" value="Confirm" size="50px">
-				</form>
+			<button class="btn" data-toggle="collapse" data-target="#bookingsByDate">Bookings By Date</button>
+			<div id="bookingsByDate" class="collapse">
+	<form action="searchBookings" method="POST" >	
+			<ul>				
+				<li  class="span1_of_1 left">
+					<h5>check-in-date:</h5>
+					<div class="book_date">						
+							<input class="date" name="checkIn"
+                             id="datepicker" type="text" value="DD/MM/YY" 
+                             onfocus="this.value = '';" onblur="if (this.value == '') 
+                             {this.value = 'DD/MM/YY';}">						
+					</div>					
+				</li>
+				<li  class="span1_of_1 left">
+					<h5>check-out-date:</h5>
+					<div class="book_date">						
+							<input class="date" id="datepicker1" type="text" name="checkOut"
+							value="DD/MM/YY" onfocus="this.value = '';" 
+							onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">						
+					</div>		
+				</li>				
+				<li class="span1_of_3">
+					<div class="date_btn">                                       
+							<input type="submit" value="Search Bookings" />						
+					</div>
+				</li>
+				<div class="clear"></div>
+			</ul>
+			</form>
+</div>			
+				<button class="btn" data-toggle="collapse" data-target="#detailConfirm">Confirm</button>
+					<div id="detailConfirm" class="collapse">
+						<div id="roomDetails">
+							<Label>Room Type</Label>${room.roomType}
+							<Label>Bed Type</Label>${room.bedType}
+							<Label>Check In Date</Label> ${checkIn}
+							<Label>Check Out Date</Label> ${checkOut}
+							<Label>Number of Guest</Label> ${guestNum}
+							<Label>Price</Label> ${room.price}
+						</div>
+					
+						<form action="confirmBooking">
+							<input type="hidden" value="roomDetails" name="currentPage">
+							<input type="submit" value="Confirm" size="50px">
+						</form>
+					</div>					
 			</div>
 		</c:if>
 	</div>
