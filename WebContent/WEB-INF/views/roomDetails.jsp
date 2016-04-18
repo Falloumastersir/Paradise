@@ -158,8 +158,7 @@
 			<c:if test="${room.spa==1}">Spa</c:if> </br>
 			<br />
 			<br />
-			<div class="date_btn2">
-			<button class="btn" data-toggle="collapse" data-target="#bookingsByDate">Bookings By Date</button>			
+			<div class="date_btn2">						
 				<button class="btn" data-toggle="collapse" data-target="#detailConfirm">Confirm</button>
 					<div id="detailConfirm" class="collapse">
 						<div id="roomDetails">

@@ -78,7 +78,7 @@
 				
                 <li><a href="contact">Contact Us</a></li>
 			    
-			    <li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${name}</a></li>
+			    <li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${username}</a></li>
 				<div class="clear"></div>
 			</ul>
 			<!-- start profile_details -->
@@ -95,9 +95,17 @@
 	<div class="container">
          <h1>Confirmation page</h1>
              <b>Thank you!</b><br/>
-             <c:out value="${name}"></c:out>
+             <c:out value="${username}"></c:out>
              <br/>
              <b>Here are your Confirmation details: </b>
+             <Label>Check In Date</Label>
+             <c:out value="${newBooking.checkIn}"></c:out>
+             <Label>Check Out Date</Label>
+             <c:out value="${newBooking.checkOut}"></c:out>
+             <Label>Number of Guest</Label>
+             <c:out value="${newBooking.guestNum}"></c:out>
+             <Label>Room Number</Label>
+             <c:out value="${newBooking.roomNumber}"></c:out>
              <br />
             
              To go back to our Home page  <a href="welcome">Click Here</a>

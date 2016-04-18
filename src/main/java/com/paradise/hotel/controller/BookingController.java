@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,10 +23,13 @@ public class BookingController {
 	@RequestMapping(value="/confirmBooking", method=RequestMethod.GET)
 	public String confirm(
 			@RequestParam("currentPage") String currentPage,
-			HttpSession httpSession) throws ParseException{
+			HttpSession httpSession,
+			Model model) 
+					throws ParseException {
 		
 		// booking testing without log-in for now
 		String userName = "megrim";
+		httpSession.setAttribute("username", userName);
 				
 		int roomId = (Integer) httpSession.getAttribute("selectedRoomID");
 		int roomNumber = (Integer) httpSession.getAttribute("selectedRoomNumber");
@@ -51,10 +55,14 @@ public class BookingController {
 			newRes.setCheckIn(checkInDate);
 			newRes.setCheckOut(checkOutDate);
 			newRes.setGuestNum(guestNum);
-			newRes.setUserId((byte) userID);
-			System.out.println((byte)userID);
-		
+			newRes.setUserId((byte) userID);	
+			System.out.println(newRes.getResId());
+			
+			// add the new booking into Reservation table
 			bookingHand.addBooking(newRes);
+			
+			// add the new booking into a model to pass to confirm.jsp
+			model.addAttribute("newBooking", newRes);
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();

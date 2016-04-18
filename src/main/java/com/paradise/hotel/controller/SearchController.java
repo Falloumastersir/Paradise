@@ -42,6 +42,26 @@ public class SearchController {
 		return new ModelAndView("book", "searchResult", searchResult);
 	}
 	
+	@RequestMapping(value="/searchToChange", method=RequestMethod.GET)
+	public String searchToChange(@RequestParam("bedType") String bedType,
+			@RequestParam("checkIn") String checkIn,
+			@RequestParam("checkOut") String checkOut,
+			@RequestParam("guestNum") String guestNum,
+			Model model,
+			HttpSession httpSession) {
+		
+		String ci = changeDate(checkIn);
+		String co = changeDate(checkOut);	
+		List<Room> searchResult = searchHand.getAvailableRooms(ci, co, bedType);
+		model.addAttribute("searchResult", searchResult);
+		
+		httpSession.setAttribute("guestNum", guestNum);
+		httpSession.setAttribute("checkIn", ci);
+		httpSession.setAttribute("checkOut", co);
+		
+		return "changeBooking";
+	}
+	
 	@RequestMapping(value="/details", method=RequestMethod.GET)
 	public String viewDetails(@RequestParam("roomID") int roomID,
 			@RequestParam("roomNumber") int roomNumber,

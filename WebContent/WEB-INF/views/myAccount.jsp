@@ -99,16 +99,39 @@
        <div class="wrapper">
 	<div class="container">
 	 
-		<h3>Hey <c:out value="${name}"></c:out></h3>
-		<h3>You can change your booking</h3>
-		<form:form  class="form" action="myAccountController" method="POST" >
-	                <h5>Here are your currently booking details:</h5>
-	                
-	                
-                       <button type="submit" id="login-button" >Change</button>
-                       
-                
-		</form:form>
+		<h3>Hi, <c:out value="${username}"></c:out></h3>
+		<!-- <h3>You can change your booking</h3> -->
+				<c:if test="${not empty bookings}">
+					<h5>Here are your current booking details:</h5>
+					<table>
+						<tr>
+							<td>Room Number</td>
+							<td>Check In</td>
+							<td>Check Out</td>
+							<td>Number of Guest</td>
+						</tr>
+						<c:forEach var="booking" items="${bookings}">
+							<tr>
+								<td>${booking.roomNumber}</td>
+								<td>${booking.checkIn}</td>
+								<td>${booking.checkOut}</td>
+								<td>${booking.guestNum}</td>								
+								<td>
+									<form action="changeBooking" method="POST" /> 
+										<input type="hidden" name="id" value="${booking.resId}">
+										<input type="submit" value="Edit">
+									</form>
+									<form action="cancelBooking" method="POST" />
+										<input type="hidden" name="id" value="${booking.resId}">
+										<input type="submit" value="Cancel">
+									</form>
+								</td>
+							</tr>
+						</c:forEach>
+					</table>
+
+				</c:if>
+				
 		<form:form action="logout" method="POST">
 		 <button type="submit" id="login-button" >Logout</button>
                  </form:form>

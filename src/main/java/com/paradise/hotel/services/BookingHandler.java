@@ -51,5 +51,59 @@ public class BookingHandler {
 		
 	 	return user_id;		
 	}
+
+
+	public List<Reservation> getBookingsByUser(int userId) {
+		factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		String strQuery = "From Reservation "
+				+ "WHERE user_id=" + userId;
+	 	Query query = session.createQuery(strQuery);
+	 	List<Reservation> resList = new ArrayList<Reservation>();
+	 	try {
+			 resList = query.list();			 
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.out.println("Error occurred getting booking list for the user");			
+		}
+	 	session.getTransaction().commit();	 	
+		
+		return resList;
+	}
+
+	public void deleteBooking(int bookingToDelete) {
+		Reservation booking = getBookingById(bookingToDelete);
+		System.out.println("Room number to be deleted" + booking.getRoomNumber());
+		factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		try {		
+			session.delete(booking);
+			System.out.println("Booking deleted succesfully");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		session.getTransaction().commit();
+		
+	}
+
+
+	private Reservation getBookingById(int bookingToDelete) {
+		factory = HibernateUtil.getSessionFactory();
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		Query query = session.createQuery("FROM Reservation where res_id=" + bookingToDelete);
+	 	List<Reservation> resList = new ArrayList<Reservation>();
+	 	Reservation resToDelete = new Reservation();
+		try {
+			resList = query.list();
+			resToDelete = resList.get(0);			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		session.getTransaction().commit();
+		return resToDelete;
+	}
 	
 }
