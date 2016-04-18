@@ -27,6 +27,48 @@ public class LoginController {
 		public String load(){
 			return "login";
 		}
+	
+	@RequestMapping(value="/loginToConfirm", method=RequestMethod.POST)
+	public String loginToConfirm(@RequestParam("username") String username,
+            										@RequestParam("password") String pwd,
+            										@RequestParam("name") String nm,
+            										Map<String, Object> model, 
+            										HttpSession httpSession) {
+	
+		Session session = factory.getCurrentSession();
+		session.beginTransaction();
+		
+		LoginServiceImpl ls = new LoginServiceImpl();
+		boolean result = ls.authenticateUser(username, pwd);
+		User user = ls.getUserByUserId(username);
+		System.out.println("User " + user.getName());
+		if(result == true){
+		model.put("username",username);
+		model.put("password", pwd);
+		model.put("name", nm);
+		httpSession.setAttribute("username", username);
+		
+//		if(httpSession.getAttribute("previousPage")!=null){
+//		  		return "redirect:" + httpSession.getAttribute("previousPage");
+//		} else {
+//		  		return "welcome";
+//		}
+		return "roomDetails";
+			 	  
+		}
+		else if(username.isEmpty()){
+		model.put("userNameError","Please enter user name");
+		
+		}
+		else if(nm.isEmpty()){
+		model.put("passwordError", "Please enter your password");
+		}else if(pwd.isEmpty()){
+		model.put("passwordError", "Please enter your password");
+		}
+		return "login";
+	}
+
+	
 		
 	@RequestMapping(value="/loginController" ,method=RequestMethod.POST)
 	 public String login(@RequestParam("username") String username,

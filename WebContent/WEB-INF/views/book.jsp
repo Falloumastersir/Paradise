@@ -75,7 +75,12 @@
 						<li><a href="gallery.html">Photo Gallery</a></li> |
 						<li><a href="activities.html">Map</a></li> |
 						<li><a href="contact">Contact Us</a></li>|
-						<li><a href="login">Login/SignUp</a></li>
+						<c:if test="${empty username}">
+						<li><a href="loginPage">Login/SignUp</a></li>
+						</c:if>				
+						<c:if test="${not empty username}">
+						<li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${username}</a></li>
+						</c:if>	
 						<div class="clear"></div>
 					</ul>
 					<!-- start profile_details -->

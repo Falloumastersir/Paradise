@@ -91,13 +91,15 @@ public class SearchController {
 	public String viewDetails(@RequestParam("roomID") int roomID,
 			@RequestParam("roomNumber") int roomNumber,
 			@RequestParam("roomPrice") double price,
-			Model model, HttpSession httpSession) {
+			Model model, 
+			HttpSession httpSession) {
 		
 		try {
 			httpSession.setAttribute("selectedRoomID", roomID);
 			httpSession.setAttribute("selectedRoomNumber", roomNumber);
 			Room room = roomHand.getRoomById(roomID);
-			model.addAttribute("room", room);
+			//model.addAttribute("room", room);
+			httpSession.setAttribute("room", room);
 			
 			// calculate the total price
 			int days = (Integer) httpSession.getAttribute("daysToStay");

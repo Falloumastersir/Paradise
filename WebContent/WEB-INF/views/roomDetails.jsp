@@ -83,7 +83,12 @@
 				<li><a href="book">Book a Room</a></li> |
 				<li><a href="gallery">Photo Gallery</a></li> |
 				<li><a href="contact">Contact Us</a></li>|
-				 <li><a href="login">Login/SignUp</a></li>
+				 <c:if test="${empty username}">
+				<li><a href="loginPage">Login/SignUp</a></li>
+				</c:if>				
+				<c:if test="${not empty username}">
+				<li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${username}</a></li>
+				</c:if>	
 				<div class="clear"></div>
 			</ul>
 			<!-- start profile_details -->
@@ -141,7 +146,8 @@
 
 
 	<div id="content">
-
+	
+	<!-- if not logged-in -->
 		<c:if test="${not empty room}">
 			<p>
 			<p>
@@ -172,7 +178,7 @@
 						</div>
 					
 						<form action="confirmBooking">
-							<input type="hidden" value="roomDetails" name="currentPage">
+							<input type="hidden" value="${room}" name="Room">
 							<input type="submit" value="Confirm" size="50px">
 						</form>
 					</div>					

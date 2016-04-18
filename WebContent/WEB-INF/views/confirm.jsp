@@ -1,6 +1,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"  %> 
 <%@ taglib uri= "http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@page session="true"%>
  <%@page import="com.paradise.hotel.entity.User"%>
@@ -76,9 +77,13 @@
                 <li><a href="aboutUs">About Us</a></li> |
 				<li><a href="gallery">Gallery</a></li> |
 				
-                <li><a href="contact">Contact Us</a></li>
-			    
-			    <li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${username}</a></li>
+                <li><a href="contact">Contact Us</a></li>			    
+			    <c:if test="${empty username}">
+				<li><a href="loginPage">Login/SignUp</a></li>
+				</c:if>				
+				<c:if test="${not empty username}">
+				<li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${username}</a></li>
+				</c:if>	
 				<div class="clear"></div>
 			</ul>
 			<!-- start profile_details -->

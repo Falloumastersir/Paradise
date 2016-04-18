@@ -103,7 +103,7 @@
 	 
 		<h3>Please Login to Book the Room</h3>
 		
-		<form:form  name="f" class="form" action="loginController" method="POST" >
+		<form:form  name="f" class="form" action="loginToConfirm" method="POST" >
 	
 		
             <input type="text" placeholder="Name" name="name">
