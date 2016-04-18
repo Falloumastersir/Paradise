@@ -47,7 +47,7 @@ public class MyAccountController {
 				
 		bookingHand.deleteBooking(bookingId);
 		
-		return "myAccount";
+		return "redirect:account";
 	}
 	
 	@RequestMapping(value="/confirmChange")
@@ -94,7 +94,7 @@ public class MyAccountController {
 			ex.printStackTrace();
 		}
 		
-		return "myAccount";
+		return "redirect:account";
 	}
 	
 	

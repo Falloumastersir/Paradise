@@ -49,16 +49,6 @@ public class Room implements Serializable {
 	public int getId() {
 		return this.id;
 	}
-	
-//	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinTable (			
-//			joinColumns = @JoinColumn(name="id"),
-//			inverseJoinColumns = @JoinColumn(name="room_id")
-//	)
-	
-//	public Set<Reservation> getReservations() {
-//		return reservations;
-//	}
 
 	public void setId(int id) {
 		this.id = id;

@@ -85,7 +85,7 @@ public class AdminController {
 		} catch ( Exception ex) {
 			ex.printStackTrace();
 		}
-		return "admin";
+		return "redirect:admin";
 	}
 	
 	@RequestMapping(value="/editRoom")
@@ -166,7 +166,7 @@ public class AdminController {
 			ex.printStackTrace();
 		}
 			    
-		return "admin";
+		return "redirect:admin";
 	}
 	
 	public String changeDate(String date) {		

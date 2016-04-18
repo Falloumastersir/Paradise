@@ -128,8 +128,8 @@
 
 <div id="searchResult">
 		<c:if test="${empty searchResult}">
-			<h5>Sorry, no result found</h5>
-			<p>Try new search</p>
+			<!-- <h5>Sorry, no result found</h5>
+			<p>Try new search</p> -->
 		</c:if>
 
 		<c:if test="${not empty searchResult}">

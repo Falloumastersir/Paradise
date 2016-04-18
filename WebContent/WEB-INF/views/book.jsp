@@ -157,6 +157,7 @@
 						<form action="details">
 							<input type="hidden" name="roomID" value="${room.id}">
 							<input type="hidden" name="roomNumber" value="${room.roomNumber}">
+							<input type="hidden" name="roomPrice" value="${room.price}" >
 							<input type="submit" name="room" value="Select" style="width: 62px;">
 						</form>
 					</div>

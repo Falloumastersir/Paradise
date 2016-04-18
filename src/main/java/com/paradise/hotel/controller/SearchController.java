@@ -1,5 +1,8 @@
 package com.paradise.hotel.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -35,11 +38,33 @@ public class SearchController {
 		String co = changeDate(checkOut);	
 		List<Room> searchResult = searchHand.getAvailableRooms(ci, co, bedType);
 		
+		// count the days of stay
+		int days = countDays(ci, co);
+		
 		httpSession.setAttribute("guestNum", guestNum);
 		httpSession.setAttribute("checkIn", ci);
 		httpSession.setAttribute("checkOut", co);
+		httpSession.setAttribute("daysToStay", days);
 		
 		return new ModelAndView("book", "searchResult", searchResult);
+	}
+	
+	public int countDays(String ci, String co) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date checkInDate = new Date();
+		Date checkOutDate = new Date();
+		long diffDays = 0;
+		try {
+			checkInDate = formatter.parse(ci);
+			checkOutDate = formatter.parse(co);
+			
+			long diff = checkOutDate.getTime() - checkInDate.getTime();
+			diffDays = diff / (24 * 60 * 60 * 1000);
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return (int) (long) diffDays;
 	}
 	
 	@RequestMapping(value="/searchToChange", method=RequestMethod.GET)
@@ -65,6 +90,7 @@ public class SearchController {
 	@RequestMapping(value="/details", method=RequestMethod.GET)
 	public String viewDetails(@RequestParam("roomID") int roomID,
 			@RequestParam("roomNumber") int roomNumber,
+			@RequestParam("roomPrice") double price,
 			Model model, HttpSession httpSession) {
 		
 		try {
@@ -72,6 +98,11 @@ public class SearchController {
 			httpSession.setAttribute("selectedRoomNumber", roomNumber);
 			Room room = roomHand.getRoomById(roomID);
 			model.addAttribute("room", room);
+			
+			// calculate the total price
+			int days = (Integer) httpSession.getAttribute("daysToStay");
+			double totalPrice = days * price;
+			httpSession.setAttribute("totalPrice", totalPrice);
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();

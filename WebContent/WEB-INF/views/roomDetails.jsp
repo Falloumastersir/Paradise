@@ -162,12 +162,13 @@
 				<button class="btn" data-toggle="collapse" data-target="#detailConfirm">Confirm</button>
 					<div id="detailConfirm" class="collapse">
 						<div id="roomDetails">
-							<Label>Room Type</Label>${room.roomType}
-							<Label>Bed Type</Label>${room.bedType}
-							<Label>Check In Date</Label> ${checkIn}
-							<Label>Check Out Date</Label> ${checkOut}
-							<Label>Number of Guest</Label> ${guestNum}
-							<Label>Price</Label> ${room.price}
+							<Label>Room Type</Label>${room.roomType} </br>							
+							<Label>Bed Type</Label>${room.bedType} </br>
+							<Label>Check In Date</Label> ${checkIn} </br>
+							<Label>Check Out Date</Label> ${checkOut} </br>
+							<Label>Number of Guest</Label> ${guestNum} </br>
+							<Label>Price per Night</Label> ${room.price} </br>
+							<Label>Total Price</Label> ${totalPrice} </br>
 						</div>
 					
 						<form action="confirmBooking">
