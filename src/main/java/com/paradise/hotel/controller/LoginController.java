@@ -37,6 +37,7 @@ public class LoginController {
 				
 		Session session = factory.getCurrentSession();
 	 	session.beginTransaction();
+	 	
 	 	LoginServiceImpl ls = new LoginServiceImpl();
 	 	boolean result = ls.authenticateUser(username, pwd);
 	 	User user = ls.getUserByUserId(username);
@@ -45,10 +46,9 @@ public class LoginController {
 	       model.put("username",username);
 	       model.put("password", pwd);
 	       model.put("name", nm);
-	       httpSession.setAttribute("username", username);
-	       String previousPage = (String) httpSession.getAttribute("previousPage");
+	       httpSession.setAttribute("username", username);	       
 	       
-	 	   return "redirect:" + previousPage;
+	 	   return "welcome";
 	 	}
 	 	else if(username.isEmpty()){
 	 		model.put("userNameError","Please enter user name");

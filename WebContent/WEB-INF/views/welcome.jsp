@@ -75,7 +75,13 @@
 				<li><a href="book">Book a Room</a></li> |
 				<li><a href="gallery">Photo Gallery</a></li> |
 				<li><a href="contact">Contact Us</a></li>|
+				<c:if test="${empty username}">
 				<li><a href="loginPage">Login/SignUp</a></li>
+				</c:if>				
+				<c:if test="${not empty username}">
+				<li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${username}</a></li>
+				</c:if>										
+				
 				<li><a href="adminLogin">Admin</a></li> 
 				<div class="clear"></div>
 			</ul>

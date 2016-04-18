@@ -111,12 +111,13 @@
 			<input type="text" placeholder="Username" name="username">
 			<input type="password" placeholder="Password" name="password">
                        
-                       <button type="submit" id="login-button" >Login</button>
+            <button type="submit" id="login-button" >Login</button>
                  
 		</form:form>
+		
 		<form:form action="cancel">
-                        <button type="submit" id="login-button" >Cancel</button>
-                        </form:form> 
+                  <button type="submit" id="login-button" >Cancel</button>
+         </form:form> 
                                   
                         
    
