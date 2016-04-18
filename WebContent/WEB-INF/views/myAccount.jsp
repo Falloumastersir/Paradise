@@ -82,7 +82,7 @@
                 <li><a href="index.html">About Us</a></li> |
 				<li><a href="gallery">Gallery</a></li> |
 			    <li><a href="contact">Contact Us</a></li>
-			    <li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${name}</a></li>
+			    <li> <img src="resources/images/user.png" height="15px" width="15px"/><a href="account">Hi ${username}</a></li>
 				<div class="clear"></div>
 			</ul>
 			<!-- start profile_details -->

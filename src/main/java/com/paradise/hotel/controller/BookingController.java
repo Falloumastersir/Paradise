@@ -28,89 +28,89 @@ public class BookingController {
 					throws ParseException {
 		
 		// booking testing without log-in for now
-		String userName = "megrim";
-		httpSession.setAttribute("username", userName);
-				
-		int roomId = (Integer) httpSession.getAttribute("selectedRoomID");
-		int roomNumber = (Integer) httpSession.getAttribute("selectedRoomNumber");
-		String checkIn = (String) httpSession.getAttribute("checkIn");
-		String checkOut = (String) httpSession.getAttribute("checkOut");
-		int guestNum = Integer.parseInt((String) httpSession.getAttribute("guestNum"));	
-					
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date checkInDate = new Date();
-		Date checkOutDate = new Date();
-		try {
-			checkInDate = formatter.parse(checkIn);
-			checkOutDate = formatter.parse(checkOut);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		
-		try {
-			int userID = bookingHand.getUserID(userName);
-			Reservation newRes = new Reservation();
-			newRes.setRoomId(roomId);
-			newRes.setRoomNumber(roomNumber);
-			newRes.setCheckIn(checkInDate);
-			newRes.setCheckOut(checkOutDate);
-			newRes.setGuestNum(guestNum);
-			newRes.setUserId((byte) userID);	
-			System.out.println(newRes.getResId());
-			
-			// add the new booking into Reservation table
-			bookingHand.addBooking(newRes);
-			
-			// add the new booking into a model to pass to confirm.jsp
-			model.addAttribute("newBooking", newRes);
-			
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}											
-		return "confirm";
+//		String userName = "megrim";
+//		httpSession.setAttribute("username", userName);
+//		String userName = (String) httpSession.getAttribute("username");		
+//		int roomId = (Integer) httpSession.getAttribute("selectedRoomID");
+//		int roomNumber = (Integer) httpSession.getAttribute("selectedRoomNumber");
+//		String checkIn = (String) httpSession.getAttribute("checkIn");
+//		String checkOut = (String) httpSession.getAttribute("checkOut");
+//		int guestNum = Integer.parseInt((String) httpSession.getAttribute("guestNum"));	
+//					
+//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+//		Date checkInDate = new Date();
+//		Date checkOutDate = new Date();
+//		try {
+//			checkInDate = formatter.parse(checkIn);
+//			checkOutDate = formatter.parse(checkOut);
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		try {
+//			int userID = bookingHand.getUserID(userName);
+//			Reservation newRes = new Reservation();
+//			newRes.setRoomId(roomId);
+//			newRes.setRoomNumber(roomNumber);
+//			newRes.setCheckIn(checkInDate);
+//			newRes.setCheckOut(checkOutDate);
+//			newRes.setGuestNum(guestNum);
+//			newRes.setUserId((byte) userID);	
+//			System.out.println(newRes.getResId());
+//			
+//			// add the new booking into Reservation table
+//			bookingHand.addBooking(newRes);
+//			
+//			// add the new booking into a model to pass to confirm.jsp
+//			model.addAttribute("newBooking", newRes);
+//			
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//		}											
+//		return "confirm";
 		
 		
 		// check logged-in user
-//		if (httpSession.getAttribute("username")!=null) {
-//			String userName = (String) httpSession.getAttribute("username");
-//			System.out.println(userName);			
-//			int roomId = (Integer) httpSession.getAttribute("selectedRoomID");
-//			int roomNumber = (Integer) httpSession.getAttribute("selectedRoomNumber");
-//			String checkIn = (String) httpSession.getAttribute("checkIn");
-//			String checkOut = (String) httpSession.getAttribute("checkOut");
-//			int guestNum = Integer.parseInt((String) httpSession.getAttribute("guestNum"));	
-//						
-//			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-//			Date checkInDate = new Date();
-//			Date checkOutDate = new Date();
-//			try {
-//				checkInDate = formatter.parse(checkIn);
-//				checkOutDate = formatter.parse(checkOut);
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
-//			
-//			try {
-//				int userID = bookingHand.getUserID(userName);
-//				Reservation newRes = new Reservation();
-//				newRes.setRoomId(roomId);
-//				newRes.setRoomNumber(roomNumber);
-//				newRes.setCheckIn(checkInDate);
-//				newRes.setCheckOut(checkOutDate);
-//				newRes.setGuestNum(guestNum);
-//				newRes.setUserId((byte) userID);
-//			
-//				bookingHand.addBooking(newRes);
-//				
-//			} catch (Exception ex) {
-//				ex.printStackTrace();
-//			}											
-//			return "confirm";
-//		
-//		} else {
-//			httpSession.setAttribute("previousPage", currentPage);
-//			return "login";
-//		}				
+		if (httpSession.getAttribute("username")!=null) {
+			String userName = (String) httpSession.getAttribute("username");
+			System.out.println(userName);			
+			int roomId = (Integer) httpSession.getAttribute("selectedRoomID");
+			int roomNumber = (Integer) httpSession.getAttribute("selectedRoomNumber");
+			String checkIn = (String) httpSession.getAttribute("checkIn");
+			String checkOut = (String) httpSession.getAttribute("checkOut");
+			int guestNum = Integer.parseInt((String) httpSession.getAttribute("guestNum"));	
+						
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date checkInDate = new Date();
+			Date checkOutDate = new Date();
+			try {
+				checkInDate = formatter.parse(checkIn);
+				checkOutDate = formatter.parse(checkOut);
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				int userID = bookingHand.getUserID(userName);
+				Reservation newRes = new Reservation();
+				newRes.setRoomId(roomId);
+				newRes.setRoomNumber(roomNumber);
+				newRes.setCheckIn(checkInDate);
+				newRes.setCheckOut(checkOutDate);
+				newRes.setGuestNum(guestNum);
+				newRes.setUserId((byte) userID);
+			
+				bookingHand.addBooking(newRes);
+				
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}											
+			return "confirm";
+		
+		} else {
+			httpSession.setAttribute("previousPage", currentPage);
+			return "login";
+		}				
 	}
 }
 

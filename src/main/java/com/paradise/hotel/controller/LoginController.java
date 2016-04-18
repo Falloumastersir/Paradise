@@ -46,9 +46,14 @@ public class LoginController {
 	       model.put("username",username);
 	       model.put("password", pwd);
 	       model.put("name", nm);
-	       httpSession.setAttribute("username", username);	       
+	       httpSession.setAttribute("username", username);
 	       
-	 	   return "welcome";
+	       if(httpSession.getAttribute("previousPage")!=null){
+	    	   		return "redirect:" + httpSession.getAttribute("previousPage");
+	       } else {
+	    	   		return "welcome";
+	       }
+	       	 	  
 	 	}
 	 	else if(username.isEmpty()){
 	 		model.put("userNameError","Please enter user name");
