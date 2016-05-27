@@ -121,70 +121,22 @@
 		                </div>
 		                 <!-- /Texts container -->
 		            </div>
-		            <!-- /Duplicate to create more slides -->
-		            <div class="slide">
-		                <img src="resources/images/hotel1.png" alt=""/>
-                              
-		                <div class="slide_content">
-                                    
-		                     <div class="slide_content_wrap">
-		                        <!-- Text title -->
-                                        
-		                        <h4 class="title"><i class="bg"></i>In every season <span class="hide">a relaxing stay </span> promised</h4>
-		                        <h5 class="title1"><i class="bg"></i>A natural environment<span class="hide">  to live in</span> </h5>
-		                        <!-- /Text title -->
-		                    </div>
-		                </div>
-		            </div>
-		            <!--/slide -->
-                             
-                             <div class="slide">
-		                <img src="resources/images/hotel6.jpg" alt=""/>
-                              
-		                <div class="slide_content">
-                                    
-		                     <div class="slide_content_wrap">
-		                        <!-- Text title -->
-                                        
-		                        <h4 class="title"><i class="bg"></i>In every season <span class="hide">a relaxing stay </span> promised</h4>
-		                        <h5 class="title1"><i class="bg"></i>A natural environment<span class="hide">  to live in</span> </h5>
-		                        <!-- /Text title -->
-		                    </div>
-		                </div>
-		            </div>
-		            <!--/slide -->
-                             <div class="slide">
-		                <img src="resources/images/hotel8.jpg" alt=""/>
-                              
-		                <div class="slide_content">
-                                    
-		                     <div class="slide_content_wrap">
-		                        <!-- Text title -->
-                                        
-                                        
-		                        <h4 class="title"><i class="bg"></i>In every season <span class="hide">a relaxing stay </span> promised</h4>
-		                        <h5 class="title1"><i class="bg"></i>A natural environment<span class="hide">  to live in</span> </h5>
-		                        <!-- /Text title -->
-		                    </div>
-		                </div>
-		            </div>
-		            <!--/slide -->
+		            
 		        </div>
-		        <div class="timers"> </div>
-		        <div class="slidePrev"><span> </span></div>
-		        <div class="slideNext"><span> </span></div>
+		        
 		    </div>
 		    <!--/slider -->
 		</div>
+    
 <!--start main -->
 <div class="main_bg">
-<div class="wrap">
-	<div class="online_reservation">
-	<div class="b_room">
-		<div class="booking_room">
+    <div class="wrap">
+	   <div class="online_reservation">
+	   <div class="b_room">
+		  <div class="booking_room">
 			<h4>book a room online</h4>
 			
-		</div>
+          </div>
 		<div class="reservation">
 		<form action="search" method="GET" >
 		
@@ -193,9 +145,8 @@
 					<h5>Type of room:</h5>
 					<!----------start section_room----------->
 					<div class="section_room">
-						<select id="country" 
-						 onchange="change_country(this.value)" class="frm-field required" 
-						 name="bedType" >											                     
+						<select class="frm-field required" 
+						 name="bedType" >
 				            <option value="single">Single room</option>
 							<option value="double">Double room</option>
 							<option value="suite">Suite room</option>
@@ -204,20 +155,16 @@
 				</li>
 				<li  class="span1_of_1 left">
 					<h5>check-in-date:</h5>
-					<div class="book_date">
-						
+					<div class="book_date">						
 							<input class="date" name="checkIn"
                              id="datepicker" type="text" value="DD/MM/YY" 
                              onfocus="this.value = '';" onblur="if (this.value == '') 
-                             {this.value = 'DD/MM/YY';}">
-						
-
+                             {this.value = 'DD/MM/YY';}">					
 					</div>					
 				</li>
 				<li  class="span1_of_1 left">
 					<h5>check-out-date:</h5>
-					<div class="book_date">
-						
+					<div class="book_date">						
 							<input class="date" id="datepicker1" type="text" name="checkOut"
 							value="DD/MM/YY" onfocus="this.value = '';" 
 							onblur="if (this.value == '') {this.value = 'DD/MM/YY';}">
@@ -228,8 +175,7 @@
 					<h5>Adults:</h5>
 					<!----------start section_room----------->
 					<div class="section_room">
-						<select id="country" onchange="change_country(this.value)"
-						 class="frm-field required"
+						<select class="frm-field required"
 						name="guestNum">
 							<option value="1">1</option>
 				            <option value="2">2</option>         
@@ -239,24 +185,24 @@
 					</div>					
 				</li>
 				<li class="span1_of_3">
-					<div class="date_btn">
-                                       
-							<input type="submit" value="Book now" />
-						
+					<div class="date_btn">                                       
+							<input type="submit" value="Book now" />						
 					</div>
 				</li>
 				<div class="clear"></div>
 			</ul>
 			</form>
-		</div>
-		<div class="clear"></div>
-		</div>
-	</div>
-	
-<!--start main -->
+		</div> <!-- End Online Reservation -->
+		  <div class="clear"></div>
+           
+                </div>
+            </div>
+		</div> <!--End Wrap-->
+</div><!--End main -->
+
 <div class="footer_bg">
-<div class="wrap">
-<div class="footer">
+    <div class="wrap">
+        <div class="footer">
 			
 			<div class="f_nav">
 				<ul>
@@ -269,9 +215,10 @@
                 <li><a href="contact">Contact us</a></li>
                  <li><a href="login">Login/SignUp</a></li>
 				</ul>
-			</div>
-			
-			<div class="clear"></div>
-                   
+			</div>            
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>                  
 </html>
  

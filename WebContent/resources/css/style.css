@@ -262,6 +262,39 @@ select option{
 .date{
 	background:url('resources/images/cal-icon.png') no-repeat 100% 50% #FFF;
 }
+
+form input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: 0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  /*background-color: rgba(255, 255, 255, 0.2);*/
+  background-color: #32A2E3;
+  width: 150px;
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  -webkit-transition-duration: 0.25s;
+          transition-duration: 0.25s;
+  font-weight: 300;
+
+}
+form input:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: black;
+}
+form input:focus {
+  background-color: white;
+  width: 300px;
+  color: #53e3a6;
+
+}
+
 .date_btn{
 	margin-top: 33px;
 }
@@ -284,14 +317,11 @@ select option{
 }
 .date_btn form input[type="submit"]:hover{
 	background: #228AC6;
-<<<<<<< HEAD
-}
-=======
-        width: 90% !important;
-        display: inline-block;
+    width: 90% !important;
+    display: inline-block;
 
 }
-.date_btn1 form input[type="submit"] {
+.date_btn1 input[type="submit"] {
 	text-transform:capitalize;
 	width: 10% !important;
 	background: #32A2E3;
@@ -308,7 +338,7 @@ select option{
 	cursor: pointer;
 }
 
-.date_btn1 form input[type="submit"]:hover {
+.date_btn1 input[type="submit"]:hover {
     background-color:  #228AC6;Green
     width: 10% !important;
         display: inline-block;
@@ -334,20 +364,22 @@ select option{
 .date_btn2 form input[type="submit"]:hover {
     background-color:  #228AC6;Green
     width: 30% !important;
-        display: inline-block;
+    display: inline-block;
 }
- */
 
 /*room display*/
 .roomContainer {
-	display: block;
+	width: 70%;
+	float: left;
 	padding: 1% 2% 12%;
 }
 
 .displayRoom {
-	width: 22.333333%;
+  display: block;
+	width: 90%;
+	height: 300px;
 	margin-left: 5.33333%;
-        padding-left: 1%;
+  padding-left: 1%;
 }
 
 .displayRoom h4 a{
@@ -380,7 +412,13 @@ select option{
 }
 
 .roomImage {
-	position: relative;
+	float: left;
+}
+
+.roomDetails {
+	float: left;
+	padding: 2% 2% 2% 2%;
+	
 }
 
 /* start footer */
@@ -881,6 +919,23 @@ span.next:hover {
 .read_more a:hover{
 	background: #228AC6;
 }
+
+/*Detail page*/
+#detailContent{
+    width: 66%;
+}
+
+#detailImage, #detailDesc{
+    float: left;
+    widows: 50%;
+    display: block;
+}
+
+
+
+
+
+
 /***** Media Quries *****/
 @media only screen and (max-width: 1366px) {
 	.wrap{

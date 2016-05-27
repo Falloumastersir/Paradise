@@ -35,7 +35,7 @@ public class AdminLoginController {
 	        user.setUsername(username);
 	        user.setPassword(pwd);
 	      
-	 		return "admin";
+	 		return "redirect:/admin";
 	 	}
 	 	else{
 		

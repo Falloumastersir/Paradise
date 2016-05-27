@@ -91,7 +91,6 @@
 		<div class="clear"></div>
 </div> <!-- header ends -->
              
-<!-- <div id="mainContainer"> -->
              
 <!-- Side bar -->
 	<div class="sidebar">
@@ -135,7 +134,7 @@
 						<input type="submit" value="Search" />
 					</div>
 				</form>
-			</div> <!-- Side bar ends -->
+    </div> <!-- Side bar ends -->
 
 	<!-- Show search result -->
 	<div class="roomContainer">
@@ -153,19 +152,19 @@
 							alt="" width="300" , height="250" />
 						</a>
 					</div>
-					<h4>${room.roomType}
-						<span>$${room.price}</span>
-					</h4>
-					<p>${room.description}</p>
-
-					<div>
+					<div class="roomDetails">
+						<h4>${room.roomType}
+							<span>$${room.price}</span>
+						</h4>
+						<p>${room.description}</p>						
 						<form action="details">
 							<input type="hidden" name="roomID" value="${room.id}">
 							<input type="hidden" name="roomNumber" value="${room.roomNumber}">
 							<input type="hidden" name="roomPrice" value="${room.price}" >
-							<input type="submit" name="room" value="Select" style="width: 62px;">
-						</form>
+							<input type="submit" name="room" value="Select" style="width: 120px;">
+						</form>					
 					</div>
+											
 				</div>
 			</c:forEach>
 		</c:if>	

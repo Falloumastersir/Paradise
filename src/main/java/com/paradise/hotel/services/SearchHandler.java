@@ -63,12 +63,6 @@ public class SearchHandler {
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
 		
-//		String queryStr = "SELECT r.roomNumber, b.checkIn, b.checkOut, b.guestNum " 
-//				+ "FROM Room AS r LEFT JOIN r.Reservation b " 
-//				+ "ON r.id=b.room_id "
-//				+ "WHERE ( r.roomNumber > (" + floor*100 + ") and r.roomNumber < (" + (floor+1)*100 + ")) "
-//				+ "ORDER BY r.roomNumber";
-		
 		String queryStr = "FROM Reservation WHERE (roomNumber > " + floor*100 + ") and (roomNumber < " + (floor+1)*100 + ") "
 				+ "ORDER BY roomNumber";
 		Query query = session.createQuery(queryStr);

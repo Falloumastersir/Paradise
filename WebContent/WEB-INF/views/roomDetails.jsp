@@ -145,36 +145,39 @@
 
 
 
-	<div id="content">
-	
-	<!-- if not logged-in -->
+	<div id="detailContent">
+		   
 		<c:if test="${not empty room}">
-			<p>
-			<p>
-			<p><img src="resources/images/${room.imageTitle}" alt="" width="800px" heigh="533px"/></p>
-			<p>${room.roomType}</p>
+            
+            <div id="detailImage">
+                <img src="resources/images/${room.imageTitle}" alt="" width="800px" heigh="533px"/>                
+            </div>	
+            
+			<div id="detailDesc">
+                <p>${room.roomType}</p>
 			<br />			
 			<p>${room.price}</p>
 			<br />			
 			<p>${room.description})</p>
 			<br />
 			<p>Amenities</p>
-			<c:if test="${room.breakfast==1}">Breakfast</c:if> </br>
-			<c:if test="${room.dinner==1}">Dinner</c:if> </br>
-			<c:if test="${room.spa==1}">Spa</c:if> </br>
-			<br />
-			<br />
-			<div class="date_btn2">						
+			<c:if test="${room.breakfast==1}">Breakfast</c:if> <br>
+			<c:if test="${room.dinner==1}">Dinner</c:if> <br>
+			<c:if test="${room.spa==1}">Spa</c:if> <br>
+			<br>
+			<br>
+            
+			<div class="detailConfirm">					
 				<button class="btn" data-toggle="collapse" data-target="#detailConfirm">Confirm</button>
 					<div id="detailConfirm" class="collapse">
 						<div id="roomDetails">
-							<Label>Room Type</Label>${room.roomType} </br>							
-							<Label>Bed Type</Label>${room.bedType} </br>
-							<Label>Check In Date</Label> ${checkIn} </br>
-							<Label>Check Out Date</Label> ${checkOut} </br>
-							<Label>Number of Guest</Label> ${guestNum} </br>
-							<Label>Price per Night</Label> ${room.price} </br>
-							<Label>Total Price</Label> ${totalPrice} </br>
+							<Label>Room Type</Label>${room.roomType} <br>							
+							<Label>Bed Type</Label>${room.bedType} <br>
+							<Label>Check In Date</Label> ${checkIn} <br>
+							<Label>Check Out Date</Label> ${checkOut} <br>
+							<Label>Number of Guest</Label> ${guestNum} <br>
+							<Label>Price per Night</Label> ${room.price} <br>
+							<Label>Total Price</Label> ${totalPrice} <br>
 						</div>
 					
 						<form action="confirmBooking">
@@ -182,25 +185,11 @@
 							<input type="submit" value="Confirm" size="50px">
 						</form>
 					</div>					
-			</div>
+			     </div>
+            </div>			
 		</c:if>
 	</div>
-
-
-
-	<!-- <div id="sliderFrame" >
-        <div id="slider">
-            
-            <img src="resources/images/i1.jpg" alt="" />
-            <img src="resources/images/i2.jpg"  alt="" />
-            <img src="resources/images/i3.jpg" alt="" />
-            <img src="resources/images/i4.jpg" alt="" />
-            <img src="resources/images/i5.jpg" />
-            
-        </div>
-        
-     </div> -->
-     
       	 
+</body>
 
 </html>

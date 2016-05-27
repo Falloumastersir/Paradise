@@ -27,11 +27,7 @@
     z-index: 10;
 }
 #fwslider .slidePrev span {
-<<<<<<< HEAD:Software/hotel/WebContent/resources/fwslider.css
-	background-image: url("WebContent/resources/sliderarrows.png");
-=======
 	background-image: url("resources/images/sliderarrows.png");
->>>>>>> a0943c3e0318116f28bdef26740510bd59cfe04e:Software/hotel/WebContent/resources/css/fwslider.css
 	width: 60px;
 	height: 60px;
 	float: left;
@@ -46,11 +42,8 @@
     z-index: 10;
 }
 #fwslider .slideNext span {
-<<<<<<< HEAD:Software/hotel/WebContent/resources/fwslider.css
- 	 background-image: url("WebContent/resources/sliderarrows.png");
-=======
- 	 background-image: url("resources/images/sliderarrows.png");
->>>>>>> a0943c3e0318116f28bdef26740510bd59cfe04e:Software/hotel/WebContent/resources/css/fwslider.css
+ 	 
+    background-image: url("resources/images/sliderarrows.png");
 	width: 60px;
 	height: 60px;
 	float: left;
@@ -118,11 +111,7 @@ h4{
 }
 
 h4 i.bg{
-<<<<<<< HEAD:Software/hotel/WebContent/resources/fwslider.css
-	background: url('WebContent/resources/stripe.png') 0px 0px;
-=======
 	background: url('resources/images/stripe.png') 0px 0px;
->>>>>>> a0943c3e0318116f28bdef26740510bd59cfe04e:Software/hotel/WebContent/resources/css/fwslider.css
 	width: 40px;
 	height: 80px;
 	position: absolute;
@@ -145,11 +134,7 @@ h4 i.bg{
 	background: #308BC4;
 }
 h5 i.bg{
-<<<<<<< HEAD:Software/hotel/WebContent/resources/fwslider.css
-	background: url("WebContent/resources/stripe1.png") 0px 0px;
-=======
 	background: url('resources/images/stripe1.png') 0px 0px;
->>>>>>> a0943c3e0318116f28bdef26740510bd59cfe04e:Software/hotel/WebContent/resources/css/fwslider.css
 	width: 34px;
 	height: 58px;
 	position: absolute;
